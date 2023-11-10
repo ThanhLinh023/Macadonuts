@@ -45,7 +45,7 @@
         <div class="row" style="margin: 10px 0 0 50px; width: 300px">
             <div class="col-sm-3 text-bg-light" style="width: 300px;height: 330px;margin-right: 90px; border: 2px solid rgb(242, 234, 234);">
                 <div class="img_container">
-                    <img src="{{ URL::to('./storage/image/' . $cake->image) }}" alt="{{ $cake->cake_name }}" class="thumbnail">
+                    <img src="{{ URL::to('./image/' . $cake->image) }}" alt="{{ $cake->cake_name }}" class="thumbnail">
                 </div>
                 <div>
                     <div style="display: flex;" >

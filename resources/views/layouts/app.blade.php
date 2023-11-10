@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="icon" type="image/x-icon" href="{{ URL::to('./storage/image/logo.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ URL::to('./image/logo.png') }}">
         <link rel="stylesheet" href="{{ URL::asset('./resources/css/app.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid me-lg-5">
                 <a class="navbar-brand" href="/">
-                    <img class="mb-lg-0" src="{{ URL::to('./storage/image/logo.png') }}" alt="" width="70">
+                    <img class="mb-lg-0" src="{{ URL::to('./image/logo.png') }}" alt="" width="70">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

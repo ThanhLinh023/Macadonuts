@@ -24,7 +24,7 @@
     </style>
     <div class="row">
         <div class="col-lg-6">
-            <img class= "img" src="{{ URL::to('./storage/image/bg_login_register.jpg') }}" alt="">
+            <img class= "img" src="{{ URL::to('./image/bg_login_register.jpg') }}" alt="">
         </div>
         <div class="col-lg-6 ">
             <h2 style="font-family: Osward, sans-serif;margin-top: 100px; margin-left: 10px;"><b>ĐĂNG NHẬP</b></h2>
