@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{ URL::asset('./resources/css/app.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <title>@yield('title', 'Macadonuts')</title>
         <style>
             .navbar {
@@ -18,7 +19,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container-fluid me-lg-5">
                 <a class="navbar-brand" href="/">
                     <img class="mb-lg-0" src="{{ URL::to('./image/logo.png') }}" alt="" width="70">

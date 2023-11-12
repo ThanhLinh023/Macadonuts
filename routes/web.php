@@ -31,3 +31,7 @@ Route::get('/cakes/add', [CakeController::class, 'add'])->middleware('auth');
 Route::get('/cakes/{name}/edit', [CakeController::class, 'edit'])->middleware('auth');
 //Show cake's menu
 Route::get('/menu', [CakeController::class, 'index']);
+
+Route::get('/test', function () {
+    return view('cakes.cart');
+});
