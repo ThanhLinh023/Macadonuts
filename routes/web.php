@@ -31,3 +31,15 @@ Route::get('/cakes/add', [CakeController::class, 'add'])->middleware('auth');
 Route::get('/cakes/{name}/edit', [CakeController::class, 'edit'])->middleware('auth');
 //Show cake's menu
 Route::get('/menu', [CakeController::class, 'index']);
+
+Route::get('/cart', function () {
+    return view('cakes.cart');
+});
+
+Route::get('/customermanage', function () {
+    return view('auth.customermanage');
+});
+
+Route::get('/cakemodify', function () {
+    return view('auth.cakemodify');
+});

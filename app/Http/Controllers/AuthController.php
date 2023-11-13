@@ -45,7 +45,7 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'email' => $request->email,
-            'user_role' => 2
+            'user_role' => 1
         ];
         DB::table('users')->insert($user);
         return redirect('/login');

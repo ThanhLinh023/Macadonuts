@@ -10,7 +10,7 @@ INSERT INTO cake VALUES('mar_choco', 'Chocolate Macaron', 25000, 'Made with real
 INSERT INTO cake VALUES('mar_vani', 'Vanilla Macaron', 25000, 'Filled with a dreamy buttercream filling','vani_maca.png' ,'mar', 20);
 INSERT INTO cake VALUES('mar_coffee', 'Coffee Macaron', 25000, 'Coffee macaron is always popular and feature a beautiful beige color','coffee_maca.png' ,'mar', 20);
 INSERT INTO cake VALUES('mar_cookie_cream', 'Cookies and Cream Macaron', 25000, 'This recipe is a must-try for Oreo lovers!','cookies_cream_maca.png' ,'mar', 20);
-INSERT INTO cake VALUES('mar_cherry', 'Cherry Macaron', 25000, 'Cherry macarons are a more unusual flavor to add to your macaron repertoire.','cherry_maca' ,'mar', 20);
+INSERT INTO cake VALUES('mar_cherry', 'Cherry Macaron', 25000, 'Cherry macarons are a more unusual flavor to add to your macaron repertoire.','cherry_maca.png' ,'mar', 20);
 --  + Donut
 INSERT INTO cake VALUES('don_yeast', 'Yeast Donuts', 25000, 'This donut type uses yeast as a leavener, giving it a light and airy interior.','yeast_donuts.png' ,'don', 20);
 INSERT INTO cake VALUES('don_cake', 'Cake Donuts', 25000, 'These have a dense base that will hold all your favorite toppings, from sprinkles to bacon','cake_donuts.png' ,'don', 20);
