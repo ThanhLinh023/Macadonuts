@@ -82,6 +82,9 @@
                     <p>
                         <a href="#" class="list-manage" style="text-decoration: none;">Đơn hàng đã đặt</a>
                     </p>
+                    <p>
+                        <a href="/customermanage" class="list-manage" style="text-decoration: none;">Quản lý khách hàng</a>
+                    </p>
                 </div>
             </div>
         </div>

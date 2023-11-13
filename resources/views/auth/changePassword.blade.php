@@ -19,6 +19,11 @@
         p {
             color: #595C5F;
         }
+
+        .back-to-account {
+            border: 1px solid #ccc;
+            margin: 20px 0 0 120px;
+        }
     </style>
     <section class="option-bar bg-dark text-warning pt-5 pb-0 mt-5">
         <div class="container tex-md-left">
@@ -26,7 +31,9 @@
             </div>
         </div>
     </section>
+    {{-- <a href="/account" class="back-to-account btn btn-light">Quay lại tài khoản</a> --}}
     <div class="row d-flex justify-content-center">
+        
         <h2 style="font-family: Osward, sans-serif;margin-top: 50px; margin-left: 10px; text-align: center;"><b>ĐỔI MẬT KHẨU</b></h2>
         <form method="POST" action="/change_password" style="margin-left: 10px;">
             @csrf
