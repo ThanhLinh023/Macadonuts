@@ -27,6 +27,12 @@ class AuthController extends Controller
     {
         return view('auth.changePassword');
     }
+    public function showCM()
+    {
+        return view('auth.customerManage', [
+            'users' => DB::table('users')->where('user_role', 2)->get()
+        ]);
+    }
     public function register(Request $request)
     {
         $uid = mt_rand(1000, 9999);
@@ -45,7 +51,7 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'email' => $request->email,
-            'user_role' => 1
+            'user_role' => 2
         ];
         DB::table('users')->insert($user);
         return redirect('/login');
@@ -61,7 +67,9 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->route('account');
         }
-        return back();
+        return back()->withErrors([
+            'loginError' => 'Invalid username or password.',
+        ]);
     }
     public function logout(Request $request) {
         auth()->logout();
@@ -83,5 +91,26 @@ class AuthController extends Controller
         );
         auth()->logout();
         return redirect()->route('login');
+    }
+    public function updateInfo(Request $request)
+    {
+        // dd($request->phone);
+        $uid = auth()->user()->user_id;
+        DB::table('users')->where('user_id', $uid)->update(
+            ['name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email]
+        );
+        return redirect('/account');
+    }
+    public function deleteUser($user_id)
+    {
+        DB::table('users')->where('user_id', $user_id)->delete();
+        return redirect()->route('login');
+    }
+    public function deleteUserForAdmin($user_id)
+    {
+        DB::table('users')->where('user_id', $user_id)->delete();
+        return redirect('/customermanage');
     }
 }

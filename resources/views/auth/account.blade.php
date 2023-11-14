@@ -11,11 +11,11 @@
             height: 500px;
         }
 
-        form {
+        /* form {
             display: block;
             flex: auto;
             margin-top: 20px;
-        }
+        } */
 
         .form-control {
             border: none;
@@ -76,47 +76,64 @@
                     <p>
                         <a href="/change_password" class="list-manage" style="text-decoration: none;">Đặt lại mật khẩu</a>
                     </p>
-                    <p>
-                        <a href="#" class="list-manage" style="text-decoration: none;">Xoá tài khoản</a>
-                    </p>
-                    <p>
-                        <a href="#" class="list-manage" style="text-decoration: none;">Đơn hàng đã đặt</a>
-                    </p>
-                    <p>
-                        <a href="/customermanage" class="list-manage" style="text-decoration: none;">Quản lý khách hàng</a>
-                    </p>
+                    @if (auth()->user()->user_role == 2)
+                        <p>
+                            <a class="list-manage" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal">Xoá tài khoản</a>
+                        </p>
+                        <p>
+                            <a href="#" class="list-manage" style="text-decoration: none;">Đơn hàng đã đặt</a>
+                        </p>
+                    @endif
+                    @if (auth()->user()->user_role == 1)
+                        <p>
+                            <a href="/customermanage" class="list-manage" style="text-decoration: none;">Quản lý khách hàng</a>
+                        </p>
+                        <p>
+                            <a href="#" class="list-manage" style="text-decoration: none;">Quản lý đơn hàng</a>
+                        </p>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xoá?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                        <form method="POST" action="/delete/{{ auth()->user()->user_id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Xoá</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-6" style="max-width: 550px;">
             <h2 style="font-family: Osward, sans-serif;margin-top: 50px; margin-left: 10px;"><b>CHI TIẾT TÀI KHOẢN</b>
             </h2>
-            <form action="/action_page.php" style="margin-left: 10px;">
+            <form method="POST" action="/update_information" style="margin-left: 10px;">
+                @csrf
                 <div class="mb-3 mt-0">
-                    <label for="" class="label-account">Họ của bạn*</label>
-                    <p contenteditable="true" class="form-control">Minh</p>
+                    <label for="name" class="label-account">Tên của bạn</label>
+                    <input type="text" contenteditable="true" class="form-control" name="name" value="{{ auth()->user()->name }}">
                 </div>
                 <div class="mb-3 mt-0">
-                    <label for="" class="label-account">Tên của bạn*</label>
-                    <p contenteditable="true" class="form-control">Phúc</p>
+                    <label for="phone" class="label-account">Số điện thoại</label>
+                    <input type="tel" contenteditable="true" class="form-control" name="phone" value="{{ auth()->user()->phone }}">
                 </div>
                 <div class="mb-3 mt-0">
-                    <label for="" class="label-account">Số điện thoại*</label>
-                    <p contenteditable="true" class="form-control">0973144627</p>
-                </div>
-                <div class="mb-3 mt-0">
-                    <label for="" class="label-account">Địa chỉ email của bạn của bạn*</label>
-                    <p contenteditable="true" class="form-control">nguyenminhphuc010603@gmail.com</p>
+                    <label for="email" class="label-account">Địa chỉ email</label>
+                    <input type="email" contenteditable="true" class="form-control" name="email" value="{{ auth()->user()->email }}">
                 </div>
                 <button type="submit" class="btn bg-danger text-white" style=" width: 550px; border-radius: 30px;">Cập nhật tài khoản</button>
-                <!-- <div class="mb-3 mt-0">
-                    <label for="">Giới tính*</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Chọn giới tính*</option>
-                        <option value="male">Nam</option>
-                        <option value="female">Nữ</option>
-                    </select>
-                </div> -->
             </form>
         </div>
     </div>

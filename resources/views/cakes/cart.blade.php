@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Cart')
+@section('title', 'Cart - Macadonuts')
 @section('content')
 
     <style>

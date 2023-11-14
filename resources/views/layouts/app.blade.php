@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/menu">Menu</a>
+                        <a class="nav-link" aria-current="page" href="/cakes/menu">Menu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Khuyến mãi</a>
@@ -51,6 +51,7 @@
                             </svg>
                         </a>
                     </li>
+                    @if (auth()->user() && auth()->user()->user_role == 2)
                     <li class="nav-item">
                         <a href="/cart" class="nav-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
@@ -60,6 +61,7 @@
                             </svg>
                         </a>
                     </li>
+                    @endunless
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <svg width="34" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +88,7 @@
     @yield('content')
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -98,11 +100,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                    <button type="button" class="btn btn-danger">Xoá</button>
+                    <form method="POST" action="/test_delete">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Xoá</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <footer class="bg-dark text-white pt-5 pb-4">
         <div class="container tex-md-left">
             <div class="row tex-center text-md-left">

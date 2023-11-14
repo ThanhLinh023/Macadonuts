@@ -1,3 +1,5 @@
+create database webmacadonuts;
+use webmacadonuts;
 create table users
 (
 	user_id varchar(255) not null unique,
@@ -23,14 +25,14 @@ create table cake
     note varchar(255),
     image varchar(255),
     cake_type varchar(255),
-    quantity int,
+    isDiscount int default 0,
+    discount_price int default 0,
     constraint primary key(cake_id)
 );
 create table cake_type
 (
 	type_id varchar(255) not null,
     type_name varchar(255),
-    quantity int,
     constraint primary key(type_id)
 );
 create table order_detail

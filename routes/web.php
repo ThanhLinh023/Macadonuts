@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CakeController;
+use App\Http\Controllers\OrderController;
 
 //--------------------------Authentication-----------------------------
 //Profile
@@ -18,28 +19,23 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 //Change password
 Route::get('/change_password', [AuthController::class, 'changePasswordForm'])->middleware('auth');
 Route::post('/change_password', [AuthController::class, 'changePassword']);
-
+//Update user information
+Route::post('/update_information', [AuthController::class, 'updateInfo']);
+//Customer information management (Admin only)
+Route::get('/customermanage', [AuthController::class, 'showCM'])->middleware('admin');
+//User's account self-delete
+Route::delete('/delete/{user_id}', [AuthController::class, 'deleteUser']);
+//Admin delete user
+Route::delete('/delete_user/{user_id}', [AuthController::class, 'deleteUserForAdmin']);
 
 //--------------------------Cakes-----------------------------
 //Show homepage
 Route::get('/', [CakeController::class, 'home']);
-//Show single cake
-Route::get('/cakes/{name}', [CakeController::class, 'show']);
-//Show cake addition form
-Route::get('/cakes/add', [CakeController::class, 'add'])->middleware('auth');
-//Show cake edition form
-Route::get('/cakes/{name}/edit', [CakeController::class, 'edit'])->middleware('auth');
 //Show cake's menu
-Route::get('/menu', [CakeController::class, 'index']);
-
-Route::get('/cart', function () {
-    return view('cakes.cart');
-});
-
-Route::get('/customermanage', function () {
-    return view('auth.customermanage');
-});
-
-Route::get('/cakemodify', function () {
-    return view('auth.cakemodify');
-});
+Route::get('/cakes/menu', [CakeController::class, 'index']);
+//Show cake addition form
+Route::get('/cakes/add', [CakeController::class, 'add'])->middleware('admin');
+//Show cake edition form
+Route::get('/cakes/{name}/modify', [CakeController::class, 'modify'])->middleware('admin');
+//Show cart
+Route::get('/cart', [OrderController::class, 'showCart'])->middleware('auth');

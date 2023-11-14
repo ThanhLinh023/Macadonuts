@@ -8,32 +8,31 @@ use Illuminate\Support\Facades\DB;
 
 class CakeController extends Controller
 {
+    //Show welcome page
     public function home()
     {
         return view('welcome');
     }
-    public function show(Cake $name)
+    //Show full cake's menu
+    public function index()
     {
-        return view('cakes.cake', [
-            'cake' => $name->getAttributes(),
-            'title' => $name->getAttributes()['cake_name']
+        return view('cakes.menu', [
+            'discount' => DB::table('cake')->where('isDiscount', 1)->get(),
+            'macarons' => DB::table('cake')->where('cake_type', 'mar')->Where('isDiscount', 0)->get(),
+            'donuts' => DB::table('cake')->where('cake_type', 'don')->Where('isDiscount', 0)->get()
         ]);
     }
+    //Add new cake (For admin only)
     public function add()
     {
         return view('cakes.addCake');
     }
-    public function edit(Cake $name)
+    //Modify cake's information (For admin only)
+    public function modify(Cake $name)
     {
-        return view('cakes.editCake', [
+        return view('cakes.cakeModify', [
             'cake' => $name->getAttributes(),
             'title' => $name->getAttributes()['cake_name']
-        ]);
-    }
-    public function index()
-    {
-        return view('cakes.menu', [
-            'cakes' => DB::table('cake')->get()
         ]);
     }
 }

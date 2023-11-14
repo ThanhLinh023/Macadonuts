@@ -43,7 +43,7 @@
                     style="outline: none; min-width: 150px; width: 550px;">
             </div>
             @error('old_password')
-                <p style="color: red;">{{ $message }}</p>
+                <p class="d-flex justify-content-center" style="color: red;">{{ $message }}</p>
             @enderror
 
             <div class="mb-4 d-flex justify-content-center">
@@ -52,7 +52,7 @@
                     style="width: 550px;">
             </div>
             @error('new_password')
-                <p style="color: red;">{{ $message }}</p>
+                <p class="d-flex justify-content-center" style="color: red;">{{ $message }}</p>
             @enderror
 
             <div class="mb-4 d-flex justify-content-center">
@@ -61,7 +61,7 @@
                     name="new_password_confirmation" style="outline: none; min-width: 150px; width: 550px;">
             </div>
             @error('new_password_confirmation')
-                <p style="color: red;">{{ $message }}</p>
+                <p class="d-flex justify-content-center" style="color: red;">{{ $message }}</p>
             @enderror
             <div class="d-flex justify-content-center">
                 <div class="button-signup d-flex justify-content-center" style="width: 550px; margin-bottom: 50px;">

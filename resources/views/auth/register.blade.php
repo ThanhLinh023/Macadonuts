@@ -41,7 +41,7 @@
                 <div class="mb-2 d-flex justify-content-center">
                     <label for="username"></label>
                     <input type="text" class="form-control" placeholder="Tạo username" name="username"
-                    style="outline: none; min-width: 150px; width: 550px;">
+                    style="outline: none; min-width: 150px; width: 550px;" value="{{ old('username') }}">
                 </div> <br>
                 @error('username')
                     <p style="color: red;">{{$message}}</p>
@@ -50,7 +50,7 @@
                 <div class="mb-4 d-flex justify-content-center">
                     <label for="name"></label>
                     <input type="text" class="form-control" placeholder="Tên của bạn" name="name"
-                    style="width: 550px;">
+                    style="width: 550px;" value="{{ old('name') }}">
                 </div>
                 @error('name')
                     <p style="color: red;">{{$message}}</p>
@@ -59,7 +59,7 @@
                 <div class="mb-4 d-flex justify-content-center">
                     <label for="email"></label>
                     <input type="email" class="form-control" placeholder="Nhập email" name="email"
-                    style="outline: none; min-width: 150px; width: 550px;">
+                    style="outline: none; min-width: 150px; width: 550px;" value="{{ old('email') }}">
                 </div>
                 @error('email')
                     <p style="color: red;">{{$message}}</p>
@@ -68,7 +68,7 @@
                 <div class="mb-4 d-flex justify-content-center">
                     <label for="phone"></label>
                     <input type="tel" class="form-control" placeholder="Số điện thoại" name="phone"
-                    style="outline: none; min-width: 150px; width: 550px;">
+                    style="outline: none; min-width: 150px; width: 550px;" value="{{ old('phone') }}">
                 </div>
                 @error('phone')
                     <p style="color: red;">{{$message}}</p>
@@ -77,7 +77,7 @@
                 <div class="mb-4 d-flex justify-content-center">
                     <label for="password"></label>
                     <input type="password" class="form-control" placeholder="Mật khẩu" name="password"
-                    style="width: 550px;">
+                    style="width: 550px;" value="{{ old('password') }}">
                 </div>
                 @error('password')
                     <p style="color: red;">{{$message}}</p>
@@ -86,7 +86,7 @@
                 <div class="mb-4 d-flex justify-content-center">
                     <label for="password_confirmation"></label>
                     <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="password_confirmation"
-                    style="width: 550px;">
+                    style="width: 550px;" value="{{ old('password_confirmation') }}">
                 </div>
                 @error('password_confirmation')
                     <p style="color: red;">{{$message}}</p>
