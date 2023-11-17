@@ -39,3 +39,23 @@ Route::get('/cakes/add', [CakeController::class, 'add'])->middleware('admin');
 Route::get('/cakes/{name}/modify', [CakeController::class, 'modify'])->middleware('admin');
 //Show cart
 Route::get('/cart', [OrderController::class, 'showCart'])->middleware('auth');
+
+Route::get('/cakes/test', function () {
+    return view('cakes.test');
+});
+
+Route::get('/auth/ordermanage', function () {
+    return view('auth.orderManage');
+});
+
+Route::get('/auth/orderdetail', function () {
+    return view('auth.orderDetail');
+});
+
+Route::get('/order', function () {
+    return view('cakes.order');
+});
+
+Route::get('/payment', function () {
+    return view('cakes.payment');
+});
