@@ -51,4 +51,11 @@
     @else
         <h3 style="margin: 20px 0 20px 5px" class="text-capitalize">No Users Found</h3>
     @endunless
+    <section class="option-bar text-warning pt-5 pb-0 mt-5">
+        <div class="container tex-md-left">
+            <div class="row tex-center text-md-left">
+            
+            </div>
+        </div>
+    </section>
 @endsection

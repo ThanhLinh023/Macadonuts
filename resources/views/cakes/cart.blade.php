@@ -71,8 +71,9 @@
                                             d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                     </svg>
                                     <span class="fs-5">40.000</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        fill="currentColor" class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#exampleModal" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
+                                        class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        viewBox="0 0 16 16">
                                         <path
                                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
                                         <path
@@ -118,55 +119,9 @@
                                             d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                     </svg>
                                     <span class="fs-5">40.000</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        fill="currentColor" class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#exampleModal" viewBox="0 0 16 16">
-                                        <path
-                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                                        <path
-                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card cart-waiting w-100 border-0 mb-4" style="height: 180px;">
-                    <div class="card-body">
-                        <div class="row g-4">
-                            <!-- Hình nền -->
-                            <div class="col-md-4">
-                                <img src="{{ URL::to('./image/minhphucpic/menu-picture(1).avif') }}" alt=""
-                                    class="img-fluid" style="height: 150px; width: 300px; object-fit: cover;">
-                            </div>
-                            <!-- Info -->
-                            <div class="col-md-4">
-                                <div class="row d-flex">
-                                    <p class="text-capitalize fw-bold fs-5">Macaron thượng hạng</p>
-                                    <p style="width: 250px; color: darkgray;">Macaron 3 lớp mềm mịn, sánh đều, thơm ngon mời
-                                        bạn ăn nhaaaaaaa hehe hihi hohoo</p>
-                                    <!-- <h6 class="text-capitalize fw-bold text-decoration-underline">Xoá</h4> -->
-                                </div>
-                            </div>
-                            <!-- Chỉnh sửa -->
-                            <div class="col-md-4 d-flex align-items-center">
-                                <div class="d-flex flex-row bd-highlight mb-3 fs-4 fw-semibold justify-content-between link-danger"
-                                    style="width: 100%;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
-                                        class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                    </svg>
-                                    <span>1</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
-                                        class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                        <path
-                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                    </svg>
-                                    <span class="fs-5">40.000</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        fill="currentColor" class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#exampleModal" viewBox="0 0 16 16">
+                                        class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        viewBox="0 0 16 16">
                                         <path
                                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
                                         <path
@@ -208,7 +163,7 @@
                                     <span class="fw-bold">200.000</span>
                                 </div>
 
-                                <button class="btn btn-danger d-grid mx-auto mt-3">Thanh toán</button>
+                                <a href="/payment" class="btn btn-danger d-grid mx-auto mt-3 w-50">Thanh toán</a>
                             </div>
                     </div>
                 </div>
