@@ -47,7 +47,7 @@ create table cake_order
 (
 	order_id varchar(255) not null,
     user_id varchar(255),
-    total_money int,
+    total_money int default 0,
     order_date datetime,
     constraint primary key(order_id)
 );

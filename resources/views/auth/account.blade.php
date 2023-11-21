@@ -82,7 +82,7 @@
                             <a class="list-manage" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal">Xoá tài khoản</a>
                         </p>
                         <p>
-                            <a href="/order" class="list-manage" style="text-decoration: none;">Đơn hàng đã đặt</a>
+                            <a href="/myorder/{{ auth()->user()->user_id }}" class="list-manage" style="text-decoration: none;">Đơn hàng đã đặt</a>
                         </p>
                     @endif
                     @if (auth()->user()->user_role == 1)
@@ -90,7 +90,7 @@
                             <a href="/customermanage" class="list-manage" style="text-decoration: none;">Quản lý khách hàng</a>
                         </p>
                         <p>
-                            <a href="/auth/ordermanage" class="list-manage" style="text-decoration: none;">Quản lý đơn hàng</a>
+                            <a href="/ordermanage" class="list-manage" style="text-decoration: none;">Quản lý đơn hàng</a>
                         </p>
                     @endif
                 </div>

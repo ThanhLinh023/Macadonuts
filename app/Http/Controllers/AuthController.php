@@ -94,7 +94,6 @@ class AuthController extends Controller
     }
     public function updateInfo(Request $request)
     {
-        // dd($request->phone);
         $uid = auth()->user()->user_id;
         DB::table('users')->where('user_id', $uid)->update(
             ['name' => $request->name,

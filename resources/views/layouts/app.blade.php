@@ -126,7 +126,7 @@
                             </span>
                             <div class="list-group">
                                 <a href="/cart" class="list-group-item list-group-item-action">Giỏ hàng của bạn</a>
-                                <a href="/order" class="list-group-item list-group-item-action">Đơn hàng của bạn</a>
+                                <a href="/myorder/{{ auth()->user()->user_id }}" class="list-group-item list-group-item-action">Đơn hàng của bạn</a>
                             </div>
                         </li>
                     @endunless

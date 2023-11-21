@@ -23,7 +23,7 @@
         <div class="row d-flex">
             <div style="">
                 <h1 style="font-family: Osward, sans-serif;margin-top: 50px; margin-left: 10px; text-align:center;"><b>Sửa thông tin</b></h1>
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="/cakes/modify/{{ $cake['cake_name'] }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-2">
@@ -59,27 +59,15 @@
                         style="outline: none; min-width: 150px; width: 550px;">
                         <img class="mb-6 mt-2" src="{{ URL::to('./image/' . $cake['image']) }}" alt="" style="width: 100px;">
                     </div>
-                    @error('image')
-                        <p style="color: red;">{{$message}}</p>
-                    @enderror
     
                     <div class="mb-4">
                         <label for="cake_type">Loại bánh</label>
-                        <input type="text" class="form-control" name="cake_type"
+                        <input type="text" class="form-control" disabled name="cake_type"
                         style="width: 550px;" value="{{ $cake['cake_type'] == 'mar' ? "Macaron" : "Donuts" }}">
                     </div>
                     @error('cake_type')
                         <p style="color: red;">{{$message}}</p>
                     @enderror
-    
-                    {{-- <div class="mb-4">
-                        <label for="password_confirmation"></label>
-                        <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="password_confirmation"
-                        style="width: 550px;" value="{{ old('password_confirmation') }}">
-                    </div>
-                    @error('password_confirmation')
-                        <p style="color: red;">{{$message}}</p>
-                    @enderror --}}
                     <div class="mb-3 d-flex justify-content-center">
                         <div class="button-signup d-flex justify-content-center">
                             <button type="submit" class="btn btn-danger btn-lg"

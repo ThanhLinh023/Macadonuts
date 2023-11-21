@@ -19,3 +19,44 @@ INSERT INTO cake(cake_id, cake_name, price, note, image, cake_type) VALUES('don_
 INSERT INTO cake VALUES('don_beignet', 'Beignet', 45000, 'This deep-fried yeasted doughnut is of French origin.','beignet_donuts.png' ,'don', 1, 25000);
 --  + Discount
 
+-- Trigger add total of order_detail to total_money of cake_order
+DELIMITER //
+create trigger before_order_detail_insert
+before insert on order_detail
+for each row
+begin
+	declare current_order_total int;
+    declare cake_price int;
+    select total_money into current_order_total
+    from cake_order
+    where order_id = new.order_id;
+    select price into cake_price from cake
+    where cake_id = new.cake_id;
+    set new.total = new.quantity * cake_price;
+    update cake_order set total_money = current_order_total + new.total
+    where order_id = new.order_id;
+end;
+//
+DELIMITER ;
+-- Test data
+insert into cake_order(order_id, user_id, order_date) values(4281, 6779, '2023-11-18');
+insert into order_detail(order_id, cake_id, quantity) values(4281, 'don_cake', 3);
+insert into order_detail(order_id, cake_id, quantity) values(4281, 'don_potato', 2);
+insert into order_detail(order_id, cake_id, quantity) values(4281, 'mar_choco', 3);
+
+
+insert into cake_order(order_id, user_id, order_date) values(3672, 6779, '2023-11-19');
+insert into order_detail(order_id, cake_id, quantity) values(3672, 'mar_cherry', 3);
+insert into order_detail(order_id, cake_id, quantity) values(3672, 'don_yeast', 2);
+insert into order_detail(order_id, cake_id, quantity) values(3672, 'mar_coffee', 3);
+
+
+select cake_order.order_id, cake.cake_name, quantity, price, total from order_detail
+left join cake_order on cake_order.order_id = order_detail.order_id
+left join cake on order_detail.cake_id = cake.cake_id
+left join users on cake_order.user_id = users.user_id
+where users.user_id = 6779;
+
+select order_id, total_money from cake_order 
+left join users on cake_order.user_id = users.user_id
+where users.user_id = 6779;
