@@ -51,7 +51,6 @@ Route::get('/myorder/{uid}', [OrderController::class, 'customerOrder'])->middlew
 Route::get('/payment', [OrderController::class, 'paymentMethod'])->middleware('auth');
 Route::get('/orderdetail/user/{uid}', [OrderController::class, 'orderDetailForAdmin'])->middleware('admin');
 
-
 Route::get('/cakes/test', function () {
     return view('cakes.test');
 });
