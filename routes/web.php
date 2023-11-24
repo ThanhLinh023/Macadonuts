@@ -66,4 +66,3 @@ Route::get('/securitypolicy', function () {
 Route::get('/cakes/test', function () {
     return view('cakes.test');
 });
-
