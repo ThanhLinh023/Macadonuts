@@ -46,10 +46,27 @@ Route::get('/cart', [OrderController::class, 'showCart'])->middleware('auth');
 
 
 //-------------------------Order----------------------------
+//Show all customers' orders
 Route::get('/ordermanage', [OrderController::class, 'orderManagement'])->middleware('admin');
+//Customers check their order
 Route::get('/myorder/{uid}', [OrderController::class, 'customerOrder'])->middleware('auth');
+//Payment
 Route::get('/payment', [OrderController::class, 'paymentMethod'])->middleware('auth');
+//Admin check customer's order detail
 Route::get('/orderdetail/user/{uid}', [OrderController::class, 'orderDetailForAdmin'])->middleware('admin');
+//Add a cake to cart
+Route::post('/cart/add/{cake_id}', [OrderController::class, 'addToCart']);
+//Delete a cake from cart
+Route::delete('/cart/delete/{cake_id}', [OrderController::class, 'deleteFromCart']);
+//Decrease number of cakes
+Route::patch('/cart/decrease/{cake_id}', [OrderController::class, 'decreaseCake']);
+//Increase number of cakes
+Route::patch('/cart/increase/{cake_id}', [OrderController::class, 'increaseCake']);
+//Apply voucher to disount
+Route::post('/cart/voucher', [OrderController::class, 'applyVoucher']);
+//Place order
+Route::post('/cart/order', [OrderController::class, 'placeOrder']);
+
 
 Route::get('/cakes/test', function () {
     return view('cakes.test');

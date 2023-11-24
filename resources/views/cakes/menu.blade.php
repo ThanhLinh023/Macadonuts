@@ -154,7 +154,10 @@
                                     </div>
                                 </div>
                                 @auth
-                                    <button type="button" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
                                     <a href="/cakes/{{ $dis->cake_name }}/modify">
@@ -223,7 +226,10 @@
                                     <span class="col-5 fs-5 fw-semibold text-danger">{{ $mar->price }}</span>
                                 </div>
                                 @auth
-                                    <button type="button" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    <form method="POST" action="/cart/add/{{ $mar->cake_id }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
                                     <a href="/cakes/{{ $mar->cake_name }}/modify">
@@ -288,7 +294,10 @@
                                     <span class="col-5 fs-5 fw-semibold text-danger">{{ $don->price }}</span>
                                 </div>
                                 @auth
-                                    <button type="button" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    <form method="POST" action="/cart/add/{{ $don->cake_id }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
                                     <a href="/cakes/{{ $don->cake_name }}/modify">

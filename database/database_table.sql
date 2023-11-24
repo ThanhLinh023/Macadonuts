@@ -58,6 +58,13 @@ create table revenue_report
     sold_quantity int,
     revenue int
 );
+create table vouchers
+(
+	voucher_code varchar(50) unique not null,
+    discount_percentage float,
+    min_order int,
+    constraint primary key(voucher_code)
+);
 
 
 alter table users add constraint fk_user_role foreign key (user_role) references allrole(role_id);
