@@ -3,7 +3,7 @@
 @section('content')
 
     <style>
-        .container {
+        .container-modify {
             justify-content: center;
             width: 500px;
         }
@@ -19,7 +19,7 @@
     </section>
 
     
-    <div class="container">
+    <div class="container container-modify">
         <div class="row d-flex">
             <div style="">
                 <h1 style="font-family: Osward, sans-serif;margin-top: 50px; margin-left: 10px; text-align:center;"><b>Sửa thông tin</b></h1>
