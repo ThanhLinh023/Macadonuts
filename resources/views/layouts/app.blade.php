@@ -103,7 +103,7 @@
                         <a class="nav-link" href="#">Khuyến mãi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link about-us" href="#">Về chúng tôi</a>
+                        <a class="nav-link about-us" href="/aboutus">Về chúng tôi</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -126,7 +126,8 @@
                             </span>
                             <div class="list-group">
                                 <a href="/cart" class="list-group-item list-group-item-action">Giỏ hàng của bạn</a>
-                                <a href="/myorder/{{ auth()->user()->user_id }}" class="list-group-item list-group-item-action">Đơn hàng của bạn</a>
+                                <a href="/myorder/{{ auth()->user()->user_id }}"
+                                    class="list-group-item list-group-item-action">Đơn hàng của bạn</a>
                             </div>
                         </li>
                     @endunless
@@ -205,10 +206,10 @@
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Chính sách</h5>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">Chính sách hoạt động</a>
+                    <a href="/actipolicy" class="text-white" style="text-decoration: none;">Chính sách hoạt động</a>
                 </p>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">Chính sách bảo mật</a>
+                    <a href="/securitypolicy" class="text-white" style="text-decoration: none;">Chính sách bảo mật</a>
                 </p>
             </div>
 
@@ -296,5 +297,21 @@
     </span>
 </a>
 </body>
+
+<script>
+    window.addEventListener('scroll', function() {
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (window.pageYOffset <= 500) {
+            backToTopButton.style.display = 'none';
+            backToTopButton.style.opacity = 0;
+            backToTopButton.style.transition = 'opacity 2s ease-in-out';
+        } else {
+            backToTopButton.style.display = 'block';
+            backToTopButton.style.opacity = 1;
+        }
+    });
+
+
+</script>
 
 </html>

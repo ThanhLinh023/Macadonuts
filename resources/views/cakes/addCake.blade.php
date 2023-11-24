@@ -3,7 +3,7 @@
 @section('content')
     
 <style>
-    .container {
+    .container_add-cake {
         justify-content: center;
         width: 500px;
     }
@@ -19,7 +19,7 @@
 </section>
 
 
-<div class="container">
+<div class="container container_add-cake">
     <div class="row d-flex">
         @if ($type == "discount")
             <h1 style="font-family: Osward, sans-serif;margin-top: 50px; margin-left: 10px; text-align:center;"><b>Thêm bánh khuyến mãi</b></h1>

@@ -34,24 +34,32 @@
         <div class="row mb-3 mt-3">
             <div class="col">
                 @unless ($order->isEmpty())
-                    <table class="table table-hover" style="width: 100%; text-align: center;">
-                        <thead>
-                            <tr class="table-warning" style="text-align: center">
-                                <th scope="col" style="width: 10%; vertical-align: middle">Mã hoá đơn</th>
-                                <th scope="col" style="text-align: left; vertical-align: middle">Sản phẩm</th>
-                                <th scope="col" style="width: 10%; vertical-align: middle">Số lượng</th>
-                                <th scope="col" style="width: 20%; vertical-align: middle">Giá bán</th>
-                                <th scope="col" style="vertical-align: middle;">Thành tiền</th>
-                                <th scope="col" style="vertical-align: middle;">Tổng thanh toán</th>
-                                <th scope="col" style="vertical-align: middle;">Tình trạng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                @foreach ($order as $o)
-                                    <tr class="bordered">
-                                        <th scope="row" style="vertical-align: middle;">{{ $o->order_id }}</th>
-                                        @foreach ($orderDetail as $od)
-                                            @if ($od->order_id == $o->order_id)
+                    @foreach ($order as $o)
+                        <table class="table table-hover" style="text-align: center; align-items:center; width: 75%;">
+                            <thead>
+                                <tr class="table-warning" style="text-align: center">
+                                    <th scope="col" style="vertical-align: middle"></th>
+                                    <th scope="col" style="vertical-align: middle">Sản phẩm</th>
+                                    <th scope="col" style="vertical-align: middle">Số lượng</th>
+                                    <th scope="col" style="vertical-align: middle">Giá bán</th>
+                                    <th scope="col" style="vertical-align: middle;">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upc-scan" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5M3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0z"/>
+                                    </svg>
+                                    <span class="fw-semibold" style="padding-right: 20px; padding-left: 6px;">Mã hoá đơn:</span>
+                                    <span class="">{{ $o->order_id }}</span>
+                                <br>
+                                <tr class="bordered">
+                                    @foreach ($orderDetail as $od)
+                                        @if ($od->order_id == $o->order_id)
+                                            <tr>
+                                                <td style="width: 20%;">
+                                                    <img src="{{ URL::to('./image/yeast_donuts.PNG') }}" alt="" class="img-fluid rounded"
+                                                         style="width: 50px; object-fit: cover;">
+                                                </td>
                                                 <td>
                                                     <p>{{ $od->cake_name }}</p>
                                                 </td>
@@ -64,18 +72,33 @@
                                                 <td>
                                                     {{ $od->total }}
                                                 </td>
-                                            @endif
-                                        @endforeach
-                                        <td class="total" style="vertical-align: middle">
-                                            {{ $o->total_money }}
-                                        </td>
-                                        <td class="status" style="vertical-align: middle">
-                                            Đang duyệt
-                                        </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                     </tr>
-                                @endforeach
-                        </tbody>
-                    </table>
+                                    <div class="status mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                                            <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+                                        </svg>
+                                        <span class="fw-semibold" style="padding-right: 20px; padding-left: 6px;">Tình trạng:</span>
+                                        <span>Đang duyệt</span> <br>
+                                    </div>
+                            </tbody>
+                        </table>
+                    
+                    
+                    <div class="summary mb-3" style="width: 75%;">
+                        <span class="fw-semibold" style="padding-right: 20px; display: flex; float: right;">
+                            
+                            Phí ship: 10000 
+                            <br class="mb-2">
+                            $ Tổng thanh toán:
+                            <span>{{ $o->total_money }}</span>
+                            <br> <br>
+                        </span>
+                    </div>
+                    <hr class="mb-5" width="75%" style="">
+                    @endforeach
                 @else
                     <h3 style="margin: 20px 0 20px 5px" class="text-capitalize">No Users Found</h3>
                 @endunless

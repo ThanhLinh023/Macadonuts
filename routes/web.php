@@ -67,7 +67,14 @@ Route::post('/cart/voucher', [OrderController::class, 'applyVoucher']);
 //Place order
 Route::post('/cart/order', [OrderController::class, 'placeOrder']);
 
+Route::get('/aboutus', function () {
+    return view('cakes.aboutUs');
+});
 
-Route::get('/cakes/test', function () {
-    return view('cakes.test');
+Route::get('/actipolicy', function () {
+    return view('cakes.actiPolicy');
+});
+
+Route::get('/securitypolicy', function () {
+    return view('cakes.securityPolicy');
 });
