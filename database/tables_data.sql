@@ -17,7 +17,11 @@ INSERT INTO cake(cake_id, cake_name, price, note, image, cake_type) VALUES('don_
 INSERT INTO cake(cake_id, cake_name, price, note, image, cake_type) VALUES('don_potato', 'Potato Donuts', 25000, 'This donut type uses mashed potatoes or potato starch instead of flour.','potato_donuts.png' ,'don');
 INSERT INTO cake(cake_id, cake_name, price, note, image, cake_type) VALUES('don_holes', 'Donuts Holes', 25000, 'They may be filled with cream, sprinkled with powdered sugar, or glazed.','hole_donuts.png' ,'don');
 INSERT INTO cake VALUES('don_beignet', 'Beignet', 45000, 'This deep-fried yeasted doughnut is of French origin.','beignet_donuts.png' ,'don', 1, 25000);
---  + Discount
+-- Vouchers
+insert into vouchers values ('cake005', 0.2, 179000);
+insert into vouchers values ('bigsaleoff', 0.2, 179000);
+insert into vouchers values ('chrismas', 0.2, 179000);
+insert into vouchers values ('thanksgiving', 0.2, 179000);
 
 -- Trigger add total of order_detail to total_money of cake_order
 DELIMITER //
@@ -27,12 +31,18 @@ for each row
 begin
 	declare current_order_total int;
     declare cake_price int;
+    declare isDis int;
+    declare dis_price int;
     select total_money into current_order_total
     from cake_order
     where order_id = new.order_id;
-    select price into cake_price from cake
+    select price, isDiscount, discount_price into cake_price, isDis, dis_price from cake
     where cake_id = new.cake_id;
-    set new.total = new.quantity * cake_price;
+    if (isDis = 1) then
+		set new.total = new.quantity * dis_price;
+    else
+		set new.total = new.quantity * cake_price;
+    end if;
     update cake_order set total_money = current_order_total + new.total
     where order_id = new.order_id;
 end;
