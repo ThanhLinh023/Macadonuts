@@ -57,7 +57,7 @@
                                         @if ($od->order_id == $o->order_id)
                                             <tr>
                                                 <td style="width: 20%;">
-                                                    <img src="{{ URL::to('./image/yeast_donuts.PNG') }}" alt="" class="img-fluid rounded"
+                                                    <img src="{{ URL::to('./image/' . $od->image) }}" alt="" class="img-fluid rounded"
                                                          style="width: 50px; object-fit: cover;">
                                                 </td>
                                                 <td>
@@ -87,18 +87,15 @@
                         </table>
                         <div class="summary mb-3" style="width: 75%;">
                             <span class="fw-semibold" style="padding-right: 20px; display: flex; float: right;">
-                                
-                                Phí ship: 10000 
-                                <br class="mb-2">
                                 $ Tổng thanh toán:
-                                <span>{{ $o->total_money }}</span>
+                                <span style="margin-left: 7px">{{ $o->total_money }}</span>
                                 <br> <br>
                             </span>
                         </div>
                         <hr class="mb-5" width="75%" style="">
                     @endforeach
                 @else
-                    <h3 style="margin: 20px 0 20px 5px" class="text-capitalize">No Users Found</h3>
+                    <h3 style="margin: 20px 0 20px 5px" class="text-capitalize">No Orders Found</h3>
                 @endunless
             </div>
         </div>

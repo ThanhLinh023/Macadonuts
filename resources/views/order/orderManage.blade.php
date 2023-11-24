@@ -9,7 +9,7 @@
     </section>
 
     <div class="container">
-        <h1 style="margin: 20px 0 20px 5px" class="text-capitalize">Order Management</h1>
+        <h1 style="margin: 20px 0 20px 5px" class="text-capitalize">Quản lý đơn đặt hàng</h1>
         @unless ($query->isEmpty()) 
             <table class="table table-striped table-hover" style="margin-bottom: 167px">
                 <thead>

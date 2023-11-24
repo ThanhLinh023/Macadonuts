@@ -117,9 +117,16 @@ class CakeController extends Controller
     public function deleteCake($name)
     {
         $image = DB::table('cake')->where('cake_name', $name)
-                    ->select('image')->get();
-        File::delete(public_path('image/' . $image[0]->image));
-        DB::table('cake')->where('cake_name', $name)->delete();
+                    ->get();
+        if ($image[0]->isDiscount == 1)
+        {
+            DB::table('cake')->where('cake_name', $name)->update(['isDiscount' => 0, 'discount_price' => 0]);
+        }
+        else
+        {
+            File::delete(public_path('image/' . $image[0]->image));
+            DB::table('cake')->where('cake_name', $name)->delete();
+        }
         return redirect('/cakes/menu');
     }
 }

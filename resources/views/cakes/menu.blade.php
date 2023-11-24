@@ -222,7 +222,7 @@
                                 <img src="{{ URL::to('./image/' . $mar->image) }}" alt="" class="img-fluid"
                                     style="height: 200px; width: 300px; object-fit: cover;">
                                 <div class="row d-flex justify-content-center">
-                                    <p class="col-7">{{ $mar->cake_name }}</p>
+                                    <p class="col-7 name-cake">{{ $mar->cake_name }}</p>
                                     <span class="col-5 fs-5 fw-semibold text-danger">{{ $mar->price }}</span>
                                 </div>
                                 @auth
@@ -290,7 +290,7 @@
                                 <img src="{{ URL::to('./image/' . $don->image) }}" alt="" class="img-fluid"
                                     style="height: 200px; width: 300px; object-fit: cover;">
                                 <div class="row d-flex justify-content-center">
-                                    <p class="col-7">{{ $don->cake_name }}</p>
+                                    <p class="col-7 name-cake">{{ $don->cake_name }}</p>
                                     <span class="col-5 fs-5 fw-semibold text-danger">{{ $don->price }}</span>
                                 </div>
                                 @auth

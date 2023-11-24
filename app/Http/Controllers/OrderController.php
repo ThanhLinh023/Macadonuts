@@ -42,7 +42,7 @@ class OrderController extends Controller
             ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
             ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
             ->leftJoin('users', 'cake_order.user_id', '=', 'users.user_id')
-            ->select('cake_order.order_id', 'cake_name', 'quantity', 'price', 'total')
+            ->select('cake_order.order_id', 'cake_name', 'quantity', 'price', 'total', 'image')
             ->where('users.user_id', $uid)
             ->get();
         return view('order.customerOrders', [
@@ -62,7 +62,7 @@ class OrderController extends Controller
             ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
             ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
             ->leftJoin('users', 'cake_order.user_id', '=', 'users.user_id')
-            ->select('cake_order.order_id', 'cake_name', 'quantity', 'price', 'total')
+            ->select('cake_order.order_id', 'cake_name', 'quantity', 'price', 'total', 'image')
             ->where('users.user_id', $uid)
             ->get();
         return view('order.orderDetailAdmin', [

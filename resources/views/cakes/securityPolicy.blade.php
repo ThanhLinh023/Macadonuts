@@ -9,7 +9,7 @@
 
     <body>
         <div class="container">
-            <h1 style="text-align: center;margin-top: 50px;"><b>CHÍNH SÁCH BẢO MẬT THÔNG TIN</b></h1>
+            <h1 style="text-align: center;margin-top: 100px;"><b>CHÍNH SÁCH BẢO MẬT THÔNG TIN</b></h1>
             <h2 style="margin-top: 50px;"><b>A. ĐỐI VỚI WEBSITE</b></h2>
             <h3><b><i>1/ Mục đích và phạm vi thu thập</i></b></h3>
             <p>Maccadonuts công nhận và tôn trọng thông tin bảo mật của các cá nhân đăng nhập vào website của Maccadonuts.
