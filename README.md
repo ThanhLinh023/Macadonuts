@@ -26,9 +26,9 @@
 2. Create a new database named: `database_table`.
 3. Create a new database named: `tables_data`.
 4. Import the database `database_table.sql` into the phpMyAdmin page.
-    - [Link to database_table.sql](https://github.com/ThanhLinh023/Macadonuts/blob/master/database/database_table.sql)
+    - [database_table.sql](https://github.com/ThanhLinh023/Macadonuts/blob/master/database/database_table.sql)
 5. Import the database `tables_data.sql` into the phpMyAdmin page.
-    - [Link to tables_data.sql](https://github.com/ThanhLinh023/Macadonuts/blob/master/database/tables_data.sql)
+    - [tables_data.sql](https://github.com/ThanhLinh023/Macadonuts/blob/master/database/tables_data.sql)
 
 #### Download Composer
 - Go to the [Composer Download](https://getcomposer.org/download/) page and select `Composer-Setup.exe` to download Composer.
