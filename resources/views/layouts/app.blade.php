@@ -100,7 +100,7 @@
                         <a class="nav-link" aria-current="page" href="/cakes/menu">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Khuyến mãi</a>
+                        <a class="nav-link" href="/addvoucher">Khuyến mãi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link about-us" href="/aboutus">Về chúng tôi</a>

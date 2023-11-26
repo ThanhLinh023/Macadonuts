@@ -78,3 +78,11 @@ Route::get('/actipolicy', function () {
 Route::get('/securitypolicy', function () {
     return view('cakes.securityPolicy');
 });
+
+Route::get('/addvoucher', function () {
+    return view('auth.addVoucher');
+});
+
+Route::get('/revenue', function () {
+    return view('order.revenue');
+});

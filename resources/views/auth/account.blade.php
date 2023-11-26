@@ -92,6 +92,9 @@
                         <p>
                             <a href="/ordermanage" class="list-manage" style="text-decoration: none;">Quản lý đơn hàng</a>
                         </p>
+                        <p>
+                            <a href="/revenue" class="list-manage" style="text-decoration: none;">Thống kê doanh thu</a>
+                        </p>
                     @endif
                 </div>
             </div>
