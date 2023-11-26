@@ -24,6 +24,7 @@
             transform: translateY(-2px);
             box-shadow: 5px 10px 28px rgba(0, 0, 0, 0.05);
         }
+
         .button {
             background-color: rgb(30, 96, 30);
             height: 50px;
@@ -41,9 +42,16 @@
     @endphp
     <!-- GIỎ HÀNG CỦA TÔI -->
     @if (!isset($cart) || $cart == null)
-        <div class="col-lg-8">
-            <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">Giỏ hàng của bạn đang trống</p>
-            <a class="button" href="/cakes/menu">Tiếp tục mua hàng</a>
+        <div class="container mt-5 mb-5">
+            {{-- <div class="col-lg-8">
+                <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">Giỏ hàng của bạn đang trống</p>
+                <a class="btn btn-outline-success mb-3" href="/cakes/menu">Tiếp tục mua hàng</a>
+            </div> --}}
+            <img class="img-empty img-fluid rounded mx-auto d-block" src="{{ URL::to('./image/minhphucpic/emptycart.png') }}" usemap="#emptycart" alt="emptycart"
+                width="1000px">
+            <map name="emptycart">
+                <area shape="rect" coords="206,380,496,426" alt="Order" href="/cakes/menu">
+            </map>
         </div>
     @else
         <div class="container mt-5">
@@ -51,7 +59,7 @@
                 <!-- CARD -->
                 <div class="col-lg-8">
                     <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">Giỏ hàng của tôi</p>
-                    <a href="/cakes/menu" class="button">Tiếp tục mua hàng</a>
+                    <a href="/cakes/menu" class="btn btn-outline-success mb-3">Tiếp tục mua hàng</a>
                     <!-- Card -->
                     @foreach ($cart as $cakeID => $value)
                         <div class="card cart-waiting w-100 border-0 mb-4" style="height: 180px;">
@@ -72,15 +80,18 @@
                                     <!-- Chỉnh sửa -->
                                     <div class="col-md-4 d-flex align-items-center">
                                         <div class="d-flex flex-row bd-highlight mb-3 fs-4 fw-semibold justify-content-between link-danger"
-                                                style="width: 100%;">
+                                            style="width: 100%;">
                                             <form method="POST" action="/cart/decrease/{{ $cakeID }}">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button {{ $value['quantity'] == 1 ? 'disabled' : '' }} type="submit" style="border: none; background-color:#fff">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
-                                                            class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                                <button {{ $value['quantity'] == 1 ? 'disabled' : '' }} type="submit"
+                                                    style="border: none; background-color:#fff">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                        <path
+                                                            d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                                                     </svg>
                                                 </button>
                                             </form>
@@ -89,11 +100,12 @@
                                                 @csrf
                                                 @method('PATCH')
                                                 <button type="submit" style="border: none; background-color:#fff">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor"
-                                                            class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                         <path
-                                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                        <path
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                                     </svg>
                                                 </button>
                                             </form>
@@ -102,9 +114,12 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" style="border: none; background-color: #fff">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                        <path
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                                     </svg>
                                                 </button>
                                             </form>
@@ -128,15 +143,17 @@
                             <h6 class="text-uppercase fw-bold">{{ count($cart) }} món</h3>
                                 <h6 class="fw-bold mt-3">Bạn có mã giảm giá?</h6>
                                 <p class="mt-0">Mã giảm giá</p>
-                                <div class="row d-flex">
-                                    <form method="POST" action="/cart/voucher">
+                                <div>
+                                    <form method="POST" action="/cart/voucher" class="row d-flex">
                                         @csrf
                                         <div class="col-7 w-75">
-                                            <input name="voucher_code" type="text" class="form-control" value="{{ old('voucher_code') }}">
+                                            <input name="voucher_code" type="text" class="form-control"
+                                                value="{{ old('voucher_code') }}">
                                         </div>
-                                        <button type="submit" class="col-5 btn btn-dark w-25" style="font-size: small;">Áp dụng</button>
+                                        <button type="submit" class="col-5 btn btn-dark w-25" style="font-size: small;">Áp
+                                            dụng</button>
                                     </form>
-                                    @if($errors->has('invalid'))
+                                    @if ($errors->has('invalid'))
                                         <p style="color: red; margin-top: 10px;">{{ $errors->first('invalid') }}</p>
                                     @endif
                                 </div>
@@ -153,7 +170,8 @@
                                         @endphp
                                         <div class="d-flex flex-row justify-content-between">
                                             <span class="fw-semibold">Giảm giá voucher</span>
-                                            <span class="fw-bold">{{ number_format(($tmp * session()->get('percent')), 0, ',', '.') }}</span>
+                                            <span
+                                                class="fw-bold">{{ number_format($tmp * session()->get('percent'), 0, ',', '.') }}</span>
                                         </div>
                                         <div class="d-flex flex-row justify-content-between">
                                             <span class="fw-semibold">Tổng thanh toán</span>
@@ -167,7 +185,8 @@
                                     @endif
                                     <form method="POST" action="/cart/order">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger d-grid mx-auto mt-3 w-50">Đặt hàng</button>
+                                        <button type="submit" class="btn btn-danger d-grid mx-auto mt-3 w-50">Đặt
+                                            hàng</button>
                                     </form>
                                 </div>
                         </div>
@@ -176,7 +195,5 @@
             </div>
         </div>
     @endif
-    <script>
-        
-    </script>
+    <script></script>
 @endsection

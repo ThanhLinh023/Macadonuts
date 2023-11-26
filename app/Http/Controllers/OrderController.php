@@ -102,7 +102,7 @@ class OrderController extends Controller
             $cart[$cakeSelected[0]->cake_id]['price'] = $cakeSelected[0]->price;
         }
         session()->put('cart', $cart);
-        return redirect('/cart');
+        return redirect('/cakes/menu');
     }
     public function deleteFromCart($cake_id)
     {

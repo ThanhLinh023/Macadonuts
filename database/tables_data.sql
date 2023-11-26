@@ -23,6 +23,8 @@ insert into vouchers values ('bigsaleoff', 0.2, 179000);
 insert into vouchers values ('chrismas', 0.2, 179000);
 insert into vouchers values ('thanksgiving', 0.2, 179000);
 
+
+
 -- Trigger add total of order_detail to total_money of cake_order
 DELIMITER //
 create trigger before_order_detail_insert
