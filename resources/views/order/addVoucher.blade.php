@@ -24,25 +24,32 @@
             <div style="">
                 <h1 style="font-family: Osward, sans-serif; margin-top: 50px; margin-left: 10px; text-align:center;"><b>Thêm mã khuyến mãi</b></h1>
                 <br>
-                <form method="POST" action="/cakes/modify/" enctype="multipart/form-data">
+                <form method="POST" action="/voucher/store">
+                    @csrf
                     <div class="mb-4">
                         <label for="voucher" class="form-label">Mã giảm giá</label>
                         <input type="text" class="form-control" name="voucher"
-                        style="outline: none; min-width: 150px; width: 550px;" value="">
+                        style="outline: none; min-width: 150px; width: 550px;" value="{{ old('voucher') }}" placeholder="MAGIAMGIA001">
                     </div>
-
+                    @error('voucher')
+                    <p style="color: red; margin-top: 10px;">Vui lòng nhập đầy đủ</p>
+                    @enderror
                     <div class="mb-4">
                         <label for="percent" class="form-label">Phần trăm giảm</label>
                         <input type="text" class="form-control" name="percent"
-                        style="width: 550px;" value="">
+                        style="width: 550px;" value="{{ old('percent') }}" placeholder="10%, 20%,...">
                     </div>
-
+                    @error('percent')
+                    <p style="color: red; margin-top: 10px;">Vui lòng nhập đầy đủ</p>
+                    @enderror
                     <div class="mb-4">
-                        <label for="min-bill" class="form-label">Hoá đơn tối thiểu</label>
-                        <input type="text" class="form-control" name="min-bill"
-                        style="outline: none; min-width: 150px; width: 550px;" value="">
+                        <label for="min_bill" class="form-label">Hoá đơn tối thiểu</label>
+                        <input type="text" class="form-control" name="min_bill"
+                        style="outline: none; min-width: 150px; width: 550px;" value="{{ old('min_bill') }}" placeholder="39000, 59000,...">
                     </div>
-
+                    @error('min_bill')
+                    <p style="color: red; margin-top: 10px;">Vui lòng nhập đầy đủ</p>
+                    @enderror
                     <div class="mb-3 d-flex justify-content-center">
                         <div class="button-signup d-flex justify-content-center">
                             <button type="submit" class="btn btn-danger btn-lg"

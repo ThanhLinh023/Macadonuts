@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CakeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\VoucherController;
 
 //--------------------------Authentication-----------------------------
 //Profile
@@ -62,11 +63,23 @@ Route::delete('/cart/delete/{cake_id}', [OrderController::class, 'deleteFromCart
 Route::patch('/cart/decrease/{cake_id}', [OrderController::class, 'decreaseCake']);
 //Increase number of cakes
 Route::patch('/cart/increase/{cake_id}', [OrderController::class, 'increaseCake']);
-//Apply voucher to disount
-Route::post('/cart/voucher', [OrderController::class, 'applyVoucher']);
 //Place order
 Route::post('/cart/order', [OrderController::class, 'placeOrder']);
 
+//-------------------------Voucher----------------------------
+//Apply voucher to discount
+Route::post('/voucher/apply', [VoucherController::class, 'applyVoucher']);
+//Show add voucher form 
+Route::get('/voucher/add', [VoucherController::class, 'addVoucherForm'])->middleware('admin');
+//Store voucher
+Route::post('/voucher/store', [VoucherController::class, 'storeVoucher']);
+
+
+
+//Show revenue report
+Route::get('/revenue', function () {
+    return view('order.revenue');
+})->middleware('admin');
 Route::get('/aboutus', function () {
     return view('cakes.aboutUs');
 });
@@ -77,12 +90,4 @@ Route::get('/actipolicy', function () {
 
 Route::get('/securitypolicy', function () {
     return view('cakes.securityPolicy');
-});
-
-Route::get('/addvoucher', function () {
-    return view('auth.addVoucher');
-});
-
-Route::get('/revenue', function () {
-    return view('order.revenue');
 });

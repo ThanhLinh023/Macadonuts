@@ -99,9 +99,11 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/cakes/menu">Menu</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/addvoucher">Khuyến mãi</a>
-                    </li>
+                    @if (auth()->user() && auth()->user()->user_role == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/voucher/add">Khuyến mãi</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link about-us" href="/aboutus">Về chúng tôi</a>
                     </li>

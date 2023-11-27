@@ -144,7 +144,7 @@
                                 <h6 class="fw-bold mt-3">Bạn có mã giảm giá?</h6>
                                 <p class="mt-0">Mã giảm giá</p>
                                 <div>
-                                    <form method="POST" action="/cart/voucher" class="row d-flex">
+                                    <form method="POST" action="/voucher/apply" class="row d-flex">
                                         @csrf
                                         <div class="col-7 w-75">
                                             <input name="voucher_code" type="text" class="form-control"

@@ -125,30 +125,6 @@ class OrderController extends Controller
         session()->put('cart', $cart);
         return redirect('/cart');
     }
-    public function applyVoucher(Request $request)
-    {
-        $vouchers = VouchersModel::all();
-        $check = false;
-        $minOrder = 0;
-        $percent = 0;
-        foreach ($vouchers as $voucher)
-        {
-            if ($voucher->getAttributes()['voucher_code'] == strtolower($request->voucher_code))
-            {
-                $check = true;
-                $percent = $voucher->getAttributes()['discount_percentage'];
-                $minOrder = $voucher->getAttributes()['min_order'];
-            }
-        }
-        if ($check)
-        {
-            return redirect('/cart')->with('percent', $percent)->with('minOrder', $minOrder)->with('check', $check);
-        }
-        else
-        {
-            return redirect('/cart')->withErrors(['invalid' => 'Mã giảm giá không hợp lệ']);
-        }
-    }
     public function placeOrder()
     {
         $cart = session()->get('cart');
