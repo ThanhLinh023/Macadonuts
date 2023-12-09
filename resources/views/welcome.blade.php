@@ -49,6 +49,18 @@
         .comment-card {
             box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.1);
         }
+
+        .comment-text,
+        .news-text {
+            margin-top: 4px;
+            line-height: 1.4rem;
+            height: 66px;
+            overflow: hidden;
+            display: block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
     </style>
 
     {{-- SLIDER CAROUSEL --}}
@@ -97,7 +109,7 @@
             <a href="">
                 <div class="col category">
                     <div class="card category-card border-0">
-                        <img src="{{ URL::to('./image/minhphucpic/newdish2.avif')}}" class="card-img-top category-images"
+                        <img src="{{ URL::to('./image/minhphucpic/newdish2.avif') }}" class="card-img-top category-images"
                             alt="Danh mục 1">
                         <div class="card-body d-flex p-2">
                             <h5 class="card-title fw-bolder text-uppercase">KHUYẾN MÃI</h5>
@@ -109,8 +121,8 @@
             <a href="">
                 <div class="col category">
                     <div class="card category-card border-0">
-                        <img src="{{ URL::to('./image/minhphucpic/category-bakery.avif')}}" class="card-img-top category-images"
-                            alt="...">
+                        <img src="{{ URL::to('./image/minhphucpic/category-bakery.avif') }}"
+                            class="card-img-top category-images" alt="...">
                         <div class="card-body d-flex p-2">
                             <h5 class="card-title fw-bolder text-uppercase">DONUT</h5>
                             <i class="bi bi-caret-right-fill"></i>
@@ -122,8 +134,8 @@
             <a href="">
                 <div class="col category">
                     <div class="card category-card border-0">
-                        <img src="{{ URL::to('./image/minhphucpic/macaron-category.avif')}}" class="card-img-top category-images"
-                            alt="...">
+                        <img src="{{ URL::to('./image/minhphucpic/macaron-category.avif') }}"
+                            class="card-img-top category-images" alt="...">
                         <div class="card-body d-flex p-2">
                             <h5 class="card-title fw-bolder text-uppercase">MACARON</h5>
                             <i class="bi bi-caret-right-fill"></i>
@@ -141,32 +153,35 @@
             <hr class="hr" style="border: 1px solid #767676;">
         </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-0 justify-content-between" style="margin-left: 100px;">
-            <div class="col comment">
-                <div class="card comment-card w-75 border-0" style="height: 320px;">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-0 justify-content-between" style="margin-left: 100px;">
+            <div class="col comment mb-3">
+                <div class="card comment-card w-75 border-0" style="">
                     <div class="card-body">
-                        <img src="{{ URL::to('./image/minhphucpic/vikhang.avif')}}" alt="" class="img-fluid">
-                        <p class="">To bring expertly crafted baked and brewed goods to our guests through a warm and
+                        <img src="{{ URL::to('./image/minhphucpic/vikhang.avif') }}" alt="" class="img-fluid">
+                        <p class="comment-text">To bring expertly crafted baked and brewed goods to our guests through a
+                            warm and
                             welcoming enthusiasm.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Vĩ Khang</h5>
                     </div>
                 </div>
             </div>
-            <div class="col comment">
-                <div class="card comment-card w-75 border-0 bg-dark-subtle" style="height: 320px;">
+            <div class="col comment mb-3">
+                <div class="card comment-card w-75 border-0 bg-dark-subtle" style="">
                     <div class="card-body">
-                        <img src="{{ URL::to('./image/minhphucpic/bichchi.avif')}}" alt="" class="img-fluid">
-                        <p>To bring expertly crafted baked and brewed goods to our guests through a warm and welcoming.</p>
+                        <img src="{{ URL::to('./image/minhphucpic/bichchi.avif') }}" alt="" class="img-fluid">
+                        <p class="comment-text">To bring expertly crafted baked and brewed goods to our guests through a
+                            warm and welcoming.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Bích Chi</h5>
                     </div>
                 </div>
             </div>
-            <div class="col comment">
-                <div class="card comment-card w-75 border-0" style="height: 320px;">
+            <div class="col comment mb-3">
+                <div class="card comment-card w-75 border-0" style="">
                     <div class="card-body">
-                        <img src="{{ URL::to('./image/minhphucpic/thanhlinh.avif')}}" alt="" class="img-fluid"
+                        <img src="{{ URL::to('./image/minhphucpic/thanhlinh.avif') }}" alt="" class="img-fluid"
                             style="height: 175px; width: 300px; object-fit: cover;">
-                        <p>To bring expertly crafted baked and brewed goods to our guests through a warm and welcoming.</p>
+                        <p class="comment-text">To bring expertly crafted baked and brewed goods to our guests through a
+                            warm and welcoming.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Thanh Linh</h5>
                     </div>
                 </div>
@@ -177,42 +192,46 @@
 
     <!-- NEWS -->
     <div class="container mt-5 mb-5 news-main" style="padding-top: 60px;">
-        <!-- <div class="row mb-3">
-                <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder">danh mục món ăn</p>
-                <hr class="hr" style="border: 1px solid #767676;">
-            </div> -->
+        <div class="row mb-3">
+            <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder">News</p>
+            <hr class="hr" style="border: 1px solid #767676;">
+        </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-5 justify-content-between">
-            <div class="col w-25 news">
-                <div class="card news-card border-0" style="background-color: rgb(222, 229, 241);">
-                    <img src="{{ URL::to('./image/minhphucpic/newdish.avif')}}" class="card-img-top category-images" alt="Danh mục 1">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 justify-content-between">
+            <div class="col mb-3 news">
+                <div class="card news-card border-0">
+                    <img src="{{ URL::to('./image/minhphucpic/newdish.avif') }}" class="card-img-top category-images"
+                        alt="Danh mục 1">
                     <div class="card-body p-2">
                         <h5 class="card-title text-capitalize">News</h5>
-                        <p class="mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong thu hè
+                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
+                            thu hè
                             này</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
             </div>
-            <div class="col w-25 news">
+            <div class="col mb-3 news">
                 <div class="card news-card border-0" style="background-color: rgb(222, 229, 241);">
-                    <img src="{{ URL::to('./image/minhphucpic/category-bakery.avif')}}" class="card-img-top category-images"
-                        alt="...">
+                    <img src="{{ URL::to('./image/minhphucpic/category-bakery.avif') }}"
+                        class="card-img-top category-images" alt="...">
                     <div class="card-body p-2">
                         <h5 class="card-title text-capitalize">News</h5>
-                        <p class="mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong thu hè
+                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
+                            thu hè
                             này</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
             </div>
-            <div class="col w-25 news">
-                <div class="card news-card border-0" style="background-color: rgb(222, 229, 241);">
-                    <img src="{{ URL::to('./image/minhphucpic/macaron-category.avif')}}" class="card-img-top category-images"
-                        alt="...">
+            <div class="col mb-3 news">
+                <div class="card news-card border-0">
+                    <img src="{{ URL::to('./image/minhphucpic/macaron-category.avif') }}"
+                        class="card-img-top category-images" alt="...">
                     <div class="card-body p-2">
                         <h5 class="card-title text-capitalize">News</h5>
-                        <p class="mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong thu hè
+                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
+                            thu hè
                             này</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>

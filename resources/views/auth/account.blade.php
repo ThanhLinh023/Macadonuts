@@ -12,10 +12,10 @@
         }
 
         /* form {
-            display: block;
-            flex: auto;
-            margin-top: 20px;
-        } */
+                display: block;
+                flex: auto;
+                margin-top: 20px;
+            } */
 
         .form-control {
             border: none;
@@ -29,10 +29,10 @@
             background-color: #202124;
             width: 350px;
             min-height: auto;
-            position: relative;
+            /* position: relative; */
             margin-bottom: 100px;
-            left: 200px;
-            top: 50px;
+            /* left: 200px;
+                top: 50px; */
             border-radius: 5px;
         }
 
@@ -62,83 +62,102 @@
             </div>
         </div>
     </section>
-    <div class="row gx-0">
-        <div class="col-lg-5">
-            <div class="list-option text-white pt-5 pb-4">
-                <div class="mx-5 mt-3">
-                    <h3 class="text-uppercase mb-0 font-weight-bold">
-                        Xin chào, <br>
-                        <p class="m-lg-0">{{ auth()->user()->name }}</p>
-                    </h3>
-                    <form class="mb-5" action="/logout" method="POST">
-                        @csrf
-                        <button type="submit" class="btn-logout text-white">Đăng xuất</button>
-                    </form>
-                    <p>
-                        <a href="/change_password" class="list-manage" style="text-decoration: none;">Đặt lại mật khẩu</a>
-                    </p>
-                    @if (auth()->user()->user_role == 2)
+    <div class="container">
+        <div class="row g-5 mt-3">
+            <div class="d-flex justify-content-center col-lg-5 mt-3">
+                <div class="list-option text-white">
+                    <div class="mx-5 py-5 mt-5">
+                        <h3 class="text-uppercase mb-0 font-weight-bold">
+                            Xin chào, <br>
+                            <p class="m-lg-0">{{ auth()->user()->name }}</p>
+                        </h3>
+                        <div style="">
+                            <form class="mb-5" action="/logout" method="POST">
+                                @csrf
+                                <button type="submit" class="btn-logout text-white">Đăng xuất</button>
+                            </form>
+                        </div>
                         <p>
-                            <a class="list-manage" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal">Xoá tài khoản</a>
+                            <a href="/change_password" class="list-manage" style="text-decoration: none;">Đặt lại mật
+                                khẩu</a>
                         </p>
-                        <p>
-                            <a href="/myorder/{{ auth()->user()->user_id }}" class="list-manage" style="text-decoration: none;">Đơn hàng đã đặt</a>
-                        </p>
-                    @endif
-                    @if (auth()->user()->user_role == 1)
-                        <p>
-                            <a href="/customermanage" class="list-manage" style="text-decoration: none;">Quản lý khách hàng</a>
-                        </p>
-                        <p>
-                            <a href="/ordermanage" class="list-manage" style="text-decoration: none;">Quản lý đơn hàng</a>
-                        </p>
-                        <p>
-                            <a href="/revenue" class="list-manage" style="text-decoration: none;">Thống kê doanh thu</a>
-                        </p>
-                    @endif
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Bạn có chắc chắn muốn xoá?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                        <form method="POST" action="/delete/{{ auth()->user()->user_id }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Xoá</button>
-                        </form>
+                        @if (auth()->user()->user_role == 2)
+                            <p>
+                                <a class="list-manage" style="text-decoration: none; cursor: pointer;" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Xoá tài khoản</a>
+                            </p>
+                            <p>
+                                <a href="/myorder/{{ auth()->user()->user_id }}" class="list-manage"
+                                    style="text-decoration: none;">Đơn hàng đã đặt</a>
+                            </p>
+                        @endif
+                        @if (auth()->user()->user_role == 1)
+                            <p>
+                                <a href="/customermanage" class="list-manage" style="text-decoration: none;">Quản lý khách
+                                    hàng</a>
+                            </p>
+                            <p>
+                                <a href="/ordermanage" class="list-manage" style="text-decoration: none;">Quản lý đơn
+                                    hàng</a>
+                            </p>
+                            <p>
+                                <a href="/revenue" class="list-manage" style="text-decoration: none;">Thống kê doanh thu</a>
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6" style="max-width: 550px;">
-            <h2 style="font-family: Osward, sans-serif;margin-top: 50px; margin-left: 10px;"><b>CHI TIẾT TÀI KHOẢN</b>
-            </h2>
-            <form method="POST" action="/update_information" style="margin-left: 10px;">
-                @csrf
-                <div class="mb-3 mt-0">
-                    <label for="name" class="label-account">Tên của bạn</label>
-                    <input type="text" contenteditable="true" class="form-control" name="name" value="{{ auth()->user()->name }}">
+
+            <div class="d-flex justify-content-center col-lg-7 mt-3 mb-5" style="max-width: 700px;">
+                <form method="POST" action="/update_information" style="width: 100%;">
+                    <h2 class="" style="font-family: Osward, sans-serif; margin-left: 10px;"><b>CHI TIẾT TÀI KHOẢN</b>
+                    </h2>
+                    @csrf
+                    <div class="mb-3 mt-0">
+                        <label for="name" class="label-account">Tên của bạn</label>
+                        <input type="text" contenteditable="true" class="form-control" name="name"
+                            value="{{ auth()->user()->name }}">
+                    </div>
+                    <div class="mb-3 mt-0">
+                        <label for="phone" class="label-account">Số điện thoại</label>
+                        <input type="tel" contenteditable="true" class="form-control" name="phone"
+                            value="{{ auth()->user()->phone }}">
+                    </div>
+                    <div class="mb-3 mt-0">
+                        <label for="email" class="label-account">Địa chỉ email</label>
+                        <input type="email" contenteditable="true" class="form-control" name="email"
+                            value="{{ auth()->user()->email }}">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn bg-danger btn-lg btn-block text-white" style="border-radius: 30px;">
+                            Cập nhật tài khoản
+                        </button> 
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có chắc chắn muốn xoá?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                            <form method="POST" action="/delete/{{ auth()->user()->user_id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Xoá</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3 mt-0">
-                    <label for="phone" class="label-account">Số điện thoại</label>
-                    <input type="tel" contenteditable="true" class="form-control" name="phone" value="{{ auth()->user()->phone }}">
-                </div>
-                <div class="mb-3 mt-0">
-                    <label for="email" class="label-account">Địa chỉ email</label>
-                    <input type="email" contenteditable="true" class="form-control" name="email" value="{{ auth()->user()->email }}">
-                </div>
-                <button type="submit" class="btn bg-danger text-white" style=" width: 550px; border-radius: 30px;">Cập nhật tài khoản</button>
-            </form>
+            </div>
         </div>
     </div>
 @endsection

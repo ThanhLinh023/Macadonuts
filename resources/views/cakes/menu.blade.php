@@ -5,13 +5,19 @@
         body {
             background: linear-gradient(180deg, #fff, rgb(247, 247, 245));
         }
+
         form {
             display: hidden;
         }
+
         .navbar {
             padding-left: 100px;
             padding-right: 100px;
             background-color: #FCF8F0;
+        }
+
+        .navbar-example2 {
+            position: fixed;
         }
 
         .sale-off-card {
@@ -52,7 +58,7 @@
         }
 
         #khuyenMai {
-            margin-top: 200px;
+            margin-top: 50px;
         }
 
         .bi-pencil-square {
@@ -74,7 +80,7 @@
         }
 
         .name-cake {
-            margin-top: 4px; 
+            margin-top: 4px;
             line-height: 1.4rem;
             height: 44px;
             overflow: hidden;
@@ -83,10 +89,15 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
         }
+
+        #navbar-example2 {
+            position: fixed;
+            z-index: 1;
+        }
     </style>
 
     <!-- Thanh lựa chọn -->
-    <header>
+    {{-- <header>
         <div class="title option-bar text-warning pb-0">
             <div class="container tex-md-left">
                 <div class="row tex-center text-md-left">
@@ -117,18 +128,34 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> --}}
 
-    <!-- KHUYẾN MÃI -->
-    <section id="khuyen-mai">
+    <nav id="navbar-example2" class="navbar bg-warning bg-body-tertiary d-flex justify-content-center"
+        style="padding-top: 100px;">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading1">KHUYẾN MÃI</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading2">MACARON</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading2">DONUT</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+        <!-- KHUYẾN MÃI -->
         <div id="khuyenMai" class="container">
             <div class="row mb-3">
-                <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
+                <p id="scrollspyHeading1" class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
                     KHUYẾN MÃI
                     @if (auth()->user() && auth()->user()->user_role == 1)
                         <a href="/cakes/addNew/discount">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" fill="currentColor" class="bi bi-plus-circle"
-                                viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" fill="currentColor"
+                                class="bi bi-plus-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -156,7 +183,8 @@
                                 @auth
                                     <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                        <button type="submit"
+                                            class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
                                     </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
@@ -192,18 +220,16 @@
 
         </div>
 
-    </section>
 
-    <!-- MACARON -->
-    <section id="macaron">
+        <!-- MACARON -->
         <div class="container mt-5">
             <div class="row mb-3">
-                <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
+                <p id="scrollspyHeading2" class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
                     MACARON
                     @if (auth()->user() && auth()->user()->user_role == 1)
                         <a href="/cakes/addNew/macaron">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" fill="currentColor" class="bi bi-plus-circle"
-                                viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" fill="currentColor"
+                                class="bi bi-plus-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -228,7 +254,8 @@
                                 @auth
                                     <form method="POST" action="/cart/add/{{ $mar->cake_id }}">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                        <button type="submit"
+                                            class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
                                     </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
@@ -261,18 +288,15 @@
             </div>
 
         </div>
-    </section>
-
-    <!-- DONUT -->
-    <section id="donut">
+        <!-- DONUT -->
         <div class="container mt-5 mb-5">
             <div class="row mb-3">
-                <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
+                <p id="scrollspyHeading3" class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
                     DONUT
                     @if (auth()->user() && auth()->user()->user_role == 1)
                         <a href="/cakes/addNew/donut">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" fill="currentColor" class="bi bi-plus-circle"
-                                viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" fill="currentColor"
+                                class="bi bi-plus-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -296,7 +320,8 @@
                                 @auth
                                     <form method="POST" action="/cart/add/{{ $don->cake_id }}">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                        <button type="submit"
+                                            class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
                                     </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
@@ -326,11 +351,12 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </div>
 
-    
 
-    <script src="script.js">
+
+
+    <script>
         let sections = document.querySelectorAll(section)
         let navLinks = document.querySelectorAll(header div div div div h5 a)
 
@@ -341,11 +367,11 @@
                 let height = sec.offsetHeight;
                 let id = sec.getAttribute('id');
 
-                if(top >= offset && top < offset + height)
-                {
+                if (top >= offset && top < offset + height) {
                     navLinks.forEach(links => {
                         links.classList.remove('active');
-                        document.querySelector('header div div div div h5 a [href*=' + id + ']').classList.add('active');
+                        document.querySelector('header div div div div h5 a [href*=' + id + ']')
+                            .classList.add('active');
                     })
                 }
             });
