@@ -91,3 +91,7 @@ Route::get('/actipolicy', function () {
 Route::get('/securitypolicy', function () {
     return view('cakes.securityPolicy');
 });
+
+route::get('/test', function () {
+    return view('cakes.test');
+});

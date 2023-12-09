@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/x-icon" href="{{ URL::to('./image/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ URL::to('./image/minhphucpic/logo2-rm-bg.png') }}">
     <link rel="stylesheet" href="{{ URL::asset('./resources/css/app.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
@@ -28,34 +28,29 @@
             scroll-behavior: smooth;
         }
 
-        .back-to-top {
+        .to-top {
+            background: white;
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: inline-flex;
+            bottom: 16px;
+            right: 32px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgb(97, 97, 213);
-            border-radius: 0.5rem;
-            padding: 14px;
-            line-height: 6px;
+            font-size: 32px;
+            color: #1f1f1f;
             text-decoration: none;
-            transition: 0.2s ease-out;
+            opacity: 0;
+            pointer-events: none;
+            transition: all .4s;
         }
 
-        .back-to-top span {
-            color: #fff;
-            font-size: 3rem;
-            font-weight: 600rem;
-            transition: 0.2s ease-out;
-        }
-
-        .back-to-top:hover {
-            background-color: rgb(126, 126, 201);
-        }
-
-        .back-to-top:hover span {
-            transform: translateY(-4px);
+        .to-top.active {
+            bottom: 32px;
+            pointer-events: auto;
+            opacity: 1;
         }
 
         .nav-item__cart:hover .list-group {
@@ -88,7 +83,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid me-lg-5">
             <a class="navbar-brand" href="/">
-                <img class="mb-lg-0" src="{{ URL::to('./image/logo.png') }}" alt="" width="70">
+                <img class="mb-lg-0" src="{{ URL::to('./image/minhphucpic/logo2-rm-bg.png') }}" alt="" width="70">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -208,10 +203,12 @@
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Chính sách</h5>
                 <p>
-                    <a href="/actipolicy" class="text-white" style="text-decoration: none;">Chính sách hoạt động</a>
+                    <a href="/actipolicy" class="text-white" style="text-decoration: none;">Chính sách hoạt
+                        động</a>
                 </p>
                 <p>
-                    <a href="/securitypolicy" class="text-white" style="text-decoration: none;">Chính sách bảo mật</a>
+                    <a href="/securitypolicy" class="text-white" style="text-decoration: none;">Chính sách bảo
+                        mật</a>
                 </p>
             </div>
 
@@ -289,31 +286,26 @@
 </footer>
 
 {{-- BACK TO TOP --}}
-<a href="#" class="back-to-top shadow rounded">
-    <span class="material-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-arrow-up" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-        </svg>
-    </span>
+<a href="#" class="to-top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+        <path
+            d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+    </svg>
 </a>
 </body>
 
+
 <script>
-    window.addEventListener('scroll', function() {
-        const backToTopButton = document.querySelector('.back-to-top');
-        if (window.pageYOffset <= 500) {
-            backToTopButton.style.display = 'none';
-            backToTopButton.style.opacity = 0;
-            backToTopButton.style.transition = 'opacity 2s ease-in-out';
+    const toTop = document.querySelector(".to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+            toTop.classList.add("active");
         } else {
-            backToTopButton.style.display = 'block';
-            backToTopButton.style.opacity = 1;
+            toTop.classList.remove("active");
         }
-    });
-
-
+    })
 </script>
 
 </html>
