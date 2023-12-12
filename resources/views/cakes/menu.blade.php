@@ -181,11 +181,12 @@
                                     </div>
                                 </div>
                                 @auth
-                                    <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
+                                    <button type="submit" onclick="addToCart('{{ $dis->cake_id }}')" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    {{-- <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
                                         @csrf
                                         <button type="submit"
                                             class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
-                                    </form>
+                                    </form> --}}
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
                                     <a href="/cakes/{{ $dis->cake_name }}/modify">
@@ -352,9 +353,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <script>
         let sections = document.querySelectorAll(section)

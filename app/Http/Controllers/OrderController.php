@@ -31,11 +31,11 @@ class OrderController extends Controller
         ]);
     }
     //Show customer's order detail
-    public function customerOrder($uid)
+    public function customerOrder()
     {
         $order = DB::table('cake_order')
             ->leftJoin('users', 'cake_order.user_id', '=', 'users.user_id')
-            ->where('users.user_id', $uid)
+            ->where('users.user_id', auth()->user()->user_id)
             ->select('order_id', 'total_money')
             ->get();
         $orderDetail = DB::table('order_detail')
@@ -43,7 +43,7 @@ class OrderController extends Controller
             ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
             ->leftJoin('users', 'cake_order.user_id', '=', 'users.user_id')
             ->select('cake_order.order_id', 'cake_name', 'quantity', 'price', 'total', 'image')
-            ->where('users.user_id', $uid)
+            ->where('users.user_id', auth()->user()->user_id)
             ->get();
         return view('order.customerOrders', [
             'order' => $order,
@@ -69,11 +69,6 @@ class OrderController extends Controller
             'order' => $order,
             'orderDetail' => $orderDetail
         ]);
-    }
-    //Show payment page
-    public function paymentMethod()
-    {
-        return view('order.payment');
     }
     //Add cake to cart
     public function addToCart($cake_id)
@@ -125,27 +120,42 @@ class OrderController extends Controller
         session()->put('cart', $cart);
         return redirect('/cart');
     }
-    public function placeOrder()
+    public function showRevenue()
     {
-        $cart = session()->get('cart');
-        $oid = mt_rand(1000, 9999);
-        $cake_order = [
-            'order_id' => $oid,
-            'user_id' => auth()->user()->user_id,
-            'order_date' => today()
-        ];
-        DB::table('cake_order')->insert($cake_order);
-        foreach ($cart as $cakeID => $value)
-        {
-            $od = [
-                'order_id' => $oid,
-                'cake_id' => $cakeID,
-                'quantity' => $value['quantity'],
-                'total' => $value['quantity'] * $value['price']
-            ];
-            DB::table('order_detail')->insert($od);
-        }
-        session()->put('cart', []);
-        return redirect('/myorder/' . auth()->user()->user_id);
+        return view('order.revenue');
+    }
+    public function calculate($month, $year)
+    {
+        $soldMar = DB::table('order_detail')
+                        ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
+                        ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
+                        ->select(DB::raw('SUM(quantity) as slmar'))
+                        ->where('cake_type', '=', 'mar')
+                        ->where(DB::raw('MONTH(order_date)'), $month)
+                        ->where(DB::raw('YEAR(order_date)'), $year)
+                        ->get();
+        $soldDon = DB::table('order_detail')
+                        ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
+                        ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
+                        ->select(DB::raw('SUM(quantity) as sldon'))
+                        ->where('cake_type', '=', 'don')
+                        ->where(DB::raw('MONTH(order_date)'), $month)
+                        ->where(DB::raw('YEAR(order_date)'), $year)
+                        ->get();
+        $totalMoney = DB::table('cake_order')
+                        ->select(DB::raw('SUM(total_money) as total'))
+                        ->where(DB::raw('MONTH(order_date)'), $month)
+                        ->where(DB::raw('YEAR(order_date)'), $year)
+                        ->get();
+        return [$soldMar[0]->slmar, $soldDon[0]->sldon, $totalMoney[0]->total];
+    }
+    public function getRevenue(Request $request)
+    {
+        $number = $this->calculate($request->month, $request->year);
+        return view('order.revenue', [
+            'mar' => $number[0],
+            'don' => $number[1],
+            'total' => $number[2]
+        ]);
     }
 }

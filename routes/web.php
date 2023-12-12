@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CakeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\CheckoutController;
 
 //--------------------------Authentication-----------------------------
 //Profile
@@ -50,9 +51,7 @@ Route::get('/cart', [OrderController::class, 'showCart'])->middleware('auth');
 //Show all customers' orders
 Route::get('/ordermanage', [OrderController::class, 'orderManagement'])->middleware('admin');
 //Customers check their order
-Route::get('/myorder/{uid}', [OrderController::class, 'customerOrder'])->middleware('auth');
-//Payment
-Route::get('/payment', [OrderController::class, 'paymentMethod'])->middleware('auth');
+Route::get('/myorder', [OrderController::class, 'customerOrder'])->middleware('auth');
 //Admin check customer's order detail
 Route::get('/orderdetail/user/{uid}', [OrderController::class, 'orderDetailForAdmin'])->middleware('admin');
 //Add a cake to cart
@@ -63,8 +62,6 @@ Route::delete('/cart/delete/{cake_id}', [OrderController::class, 'deleteFromCart
 Route::patch('/cart/decrease/{cake_id}', [OrderController::class, 'decreaseCake']);
 //Increase number of cakes
 Route::patch('/cart/increase/{cake_id}', [OrderController::class, 'increaseCake']);
-//Place order
-Route::post('/cart/order', [OrderController::class, 'placeOrder']);
 
 //-------------------------Voucher----------------------------
 //Apply voucher to discount
@@ -73,13 +70,13 @@ Route::post('/voucher/apply', [VoucherController::class, 'applyVoucher']);
 Route::get('/voucher/add', [VoucherController::class, 'addVoucherForm'])->middleware('admin');
 //Store voucher
 Route::post('/voucher/store', [VoucherController::class, 'storeVoucher']);
-
-
-
 //Show revenue report
-Route::get('/revenue', function () {
-    return view('order.revenue');
-})->middleware('admin');
+Route::get('/revenue', [OrderController::class, 'showRevenue'])->middleware('admin');
+Route::post('/getRevenue', [OrderController::class, 'getRevenue']);
+//-------------------------Payment----------------------------
+Route::post('/VNPay_Payment', [CheckoutController::class, 'Payment'])->middleware('auth');
+
+
 Route::get('/aboutus', function () {
     return view('cakes.aboutUs');
 });

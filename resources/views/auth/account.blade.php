@@ -87,7 +87,7 @@
                                     data-bs-target="#exampleModal">Xoá tài khoản</a>
                             </p>
                             <p>
-                                <a href="/myorder/{{ auth()->user()->user_id }}" class="list-manage"
+                                <a href="/myorder" class="list-manage"
                                     style="text-decoration: none;">Đơn hàng đã đặt</a>
                             </p>
                         @endif

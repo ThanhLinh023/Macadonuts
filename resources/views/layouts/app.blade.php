@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/x-icon" href="{{ URL::to('./image/minhphucpic/logo2-rm-bg.png') }}">
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>@yield('title', 'Macadonuts')</title>
     <style>
         .navbar {
@@ -123,7 +124,7 @@
                             </span>
                             <div class="list-group">
                                 <a href="/cart" class="list-group-item list-group-item-action">Giỏ hàng của bạn</a>
-                                <a href="/myorder/{{ auth()->user()->user_id }}"
+                                <a href="/myorder"
                                     class="list-group-item list-group-item-action">Đơn hàng của bạn</a>
                             </div>
                         </li>
@@ -143,14 +144,12 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-
                         </a>
                     </li>
             </ul>
         </div>
     </div>
 </nav>
-
 {{-- CONTENT --}}
 @yield('content')
 
@@ -294,7 +293,6 @@
     </svg>
 </a>
 </body>
-
 
 <script>
     const toTop = document.querySelector(".to-top");

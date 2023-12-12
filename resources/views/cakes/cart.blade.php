@@ -183,10 +183,9 @@
                                             <span class="fw-bold">{{ $toMoney }}</span>
                                         </div>
                                     @endif
-                                    <form method="POST" action="/cart/order">
+                                    <form method="POST" action="/VNPay_Payment">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger d-grid mx-auto mt-3 w-50">Đặt
-                                            hàng</button>
+                                        <button name="redirect" type="submit" class="btn btn-danger d-grid mx-auto mt-3 w-50">Thanh toán</button>
                                     </form>
                                 </div>
                         </div>
@@ -195,5 +194,4 @@
             </div>
         </div>
     @endif
-    <script></script>
 @endsection

@@ -51,24 +51,3 @@ end;
 //
 DELIMITER ;
 -- Test data
-insert into cake_order(order_id, user_id, order_date) values(4281, 6779, '2023-11-18');
-insert into order_detail(order_id, cake_id, quantity) values(4281, 'don_cake', 3);
-insert into order_detail(order_id, cake_id, quantity) values(4281, 'don_potato', 2);
-insert into order_detail(order_id, cake_id, quantity) values(4281, 'mar_choco', 3);
-
-
-insert into cake_order(order_id, user_id, order_date) values(3672, 6779, '2023-11-19');
-insert into order_detail(order_id, cake_id, quantity) values(3672, 'mar_cherry', 3);
-insert into order_detail(order_id, cake_id, quantity) values(3672, 'don_yeast', 2);
-insert into order_detail(order_id, cake_id, quantity) values(3672, 'mar_coffee', 3);
-
-
-select cake_order.order_id, cake.cake_name, quantity, price, total from order_detail
-left join cake_order on cake_order.order_id = order_detail.order_id
-left join cake on order_detail.cake_id = cake.cake_id
-left join users on cake_order.user_id = users.user_id
-where users.user_id = 6779;
-
-select order_id, total_money from cake_order 
-left join users on cake_order.user_id = users.user_id
-where users.user_id = 6779;
