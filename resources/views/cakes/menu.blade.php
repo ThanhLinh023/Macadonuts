@@ -181,12 +181,10 @@
                                     </div>
                                 </div>
                                 @auth
-                                    <button type="submit" onclick="addToCart('{{ $dis->cake_id }}')" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
-                                    {{-- <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
+                                    <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
                                         @csrf
-                                        <button type="submit"
-                                            class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
-                                    </form> --}}
+                                        <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
                                     <a href="/cakes/{{ $dis->cake_name }}/modify">
@@ -255,7 +253,7 @@
                                 @auth
                                     <form method="POST" action="/cart/add/{{ $mar->cake_id }}">
                                         @csrf
-                                        <button type="submit"
+                                        <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="submit"
                                             class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
                                     </form>
                                 @endauth
@@ -321,7 +319,7 @@
                                 @auth
                                     <form method="POST" action="/cart/add/{{ $don->cake_id }}">
                                         @csrf
-                                        <button type="submit"
+                                        <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="submit"
                                             class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
                                     </form>
                                 @endauth
