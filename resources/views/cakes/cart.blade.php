@@ -81,11 +81,11 @@
                                     <div class="col-md-4 d-flex align-items-center">
                                         <div class="d-flex flex-row bd-highlight mb-3 fs-4 fw-semibold justify-content-between link-danger"
                                             style="width: 100%;">
-                                            <form method="POST" action="/cart/decrease/{{ $cakeID }}">
+                                            <form>
                                                 @csrf
-                                                @method('PATCH')
-                                                <button {{ $value['quantity'] == 1 ? 'disabled' : '' }} type="submit"
-                                                    style="border: none; background-color:#fff">
+                                                <input type="hidden" value="{{ $cakeID }}" class="cake_{{ $cakeID }}">
+                                                <button {{ $value['quantity'] == 1 ? 'disabled' : '' }} type="button"
+                                                    style="border: none; background-color:#fff" class="decreaseQuantity" data-id="{{ $cakeID }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                         fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                                         <path
@@ -96,10 +96,10 @@
                                                 </button>
                                             </form>
                                             <span id="quantity" class="mt-1">{{ $value['quantity'] }}</span>
-                                            <form method="POST" action="/cart/increase/{{ $cakeID }}">
+                                            <form>
                                                 @csrf
-                                                @method('PATCH')
-                                                <button type="submit" style="border: none; background-color:#fff">
+                                                <input type="hidden" value="{{ $cakeID }}" class="cake_{{ $cakeID }}">
+                                                <button type="button" style="border: none; background-color:#fff" data-id="{{ $cakeID }}" class="increaseQuantity">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                         fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                         <path
@@ -110,10 +110,10 @@
                                                 </button>
                                             </form>
                                             <span class="fs-4 mt-1">{{ $value['price'] }}</span>
-                                            <form method="POST" action="/cart/delete/{{ $cakeID }}">
+                                            <form>
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" style="border: none; background-color: #fff">
+                                                <input type="hidden" value="{{ $cakeID }}" class="cake_{{ $cakeID }}">
+                                                <button type="button" style="border: none; background-color: #fff" class="deleteFromCart" data-id="{{ $cakeID }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                         fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                         <path

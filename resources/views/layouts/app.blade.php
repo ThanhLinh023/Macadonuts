@@ -312,5 +312,81 @@
         }
     })
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.addToCart').click(function () {
+            var cake_id = $(this).data('id');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '{{ url('/cart/add') }}',
+                method: 'POST',
+                data: {
+                    _token: _token,
+                    cake_id: cake_id
+                },
+                success: function(data) {
+                    swal("Đã thêm bánh vào giỏ", "","success");
+                }
+            });
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.increaseQuantity').click(function () {
+            var cake_id = $(this).data('id');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '{{ url('/cart/increase') }}',
+                method: 'PATCH',
+                data: {
+                    _token: _token,
+                    cake_id: cake_id
+                },
+                success: function (response) {
+                    $("body").html(response.html);
+                }
+            });
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.decreaseQuantity').click(function () {
+            var cake_id = $(this).data('id');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '{{ url('/cart/decrease') }}',
+                method: 'PATCH',
+                data: {
+                    _token: _token,
+                    cake_id: cake_id
+                },
+                success: function (response) {
+                    $("body").html(response.html);
+                }
+            });
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.deleteFromCart').click(function () {
+            var cake_id = $(this).data('id');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '{{ url('/cart/deleteCakeCart') }}',
+                method: 'DELETE',
+                data: {
+                    _token: _token,
+                    cake_id: cake_id
+                },
+                success: function (response) {
+                    $("body").html(response.html);
+                }
+            });
+        })
+    })
+</script>
 
 </html>

@@ -174,9 +174,10 @@
                                     </div>
                                 </div>
                                 @auth
-                                    <form method="POST" action="/cart/add/{{ $dis->cake_id }}">
+                                    <form>
                                         @csrf
-                                        <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                        <input type="hidden" value="{{ $dis->cake_id }}" class="cake_{{ $dis->cake_id }}">
+                                        <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button" data-id="{{ $dis->cake_id }}" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
                                     </form>
                                 @endauth
                                 @if (auth()->user() && auth()->user()->user_role == 1)
@@ -244,9 +245,10 @@
                                 <span class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}</span>
                             </div>
                             @auth
-                                <form method="POST" action="/cart/add/{{ $mar->cake_id }}">
+                                <form>
                                     @csrf
-                                    <button type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    <input type="hidden" value="{{ $mar->cake_id }}" class="cake_{{ $mar->cake_id }}">
+                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button" data-id="{{ $mar->cake_id }}" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
                                 </form>
                             @endauth
                             @if (auth()->user() && auth()->user()->user_role == 1)
@@ -309,9 +311,10 @@
                                 <span class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}</span>
                             </div>
                             @auth
-                                <form method="POST" action="/cart/add/{{ $don->cake_id }}">
+                                <form>
                                     @csrf
-                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6">Thêm</button>
+                                    <input type="hidden" value="{{ $don->cake_id }}" class="cake_{{ $don->cake_id }}">
+                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button" data-id="{{ $don->cake_id }}" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
                                 </form>
                             @endauth
                             @if (auth()->user() && auth()->user()->user_role == 1)

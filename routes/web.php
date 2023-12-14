@@ -55,13 +55,13 @@ Route::get('/myorder', [OrderController::class, 'customerOrder'])->middleware('a
 //Admin check customer's order detail
 Route::get('/orderdetail/user/{uid}', [OrderController::class, 'orderDetailForAdmin'])->middleware('admin');
 //Add a cake to cart
-Route::post('/cart/add/{cake_id}', [OrderController::class, 'addToCart']);
+Route::post('/cart/add', [OrderController::class, 'addToCart']);
 //Delete a cake from cart
-Route::delete('/cart/delete/{cake_id}', [OrderController::class, 'deleteFromCart']);
+Route::delete('/cart/deleteCakeCart', [OrderController::class, 'deleteFromCart']);
 //Decrease number of cakes
-Route::patch('/cart/decrease/{cake_id}', [OrderController::class, 'decreaseCake']);
+Route::patch('/cart/decrease', [OrderController::class, 'decreaseCake']);
 //Increase number of cakes
-Route::patch('/cart/increase/{cake_id}', [OrderController::class, 'increaseCake']);
+Route::patch('/cart/increase', [OrderController::class, 'increaseCake']);
 
 //-------------------------Voucher----------------------------
 //Apply voucher to discount

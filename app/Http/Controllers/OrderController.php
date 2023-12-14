@@ -71,9 +71,9 @@ class OrderController extends Controller
         ]);
     }
     //Add cake to cart
-    public function addToCart($cake_id)
+    public function addToCart(Request $request)
     {
-        $cakeSelected = DB::table('cake')->where('cake_id', $cake_id)->get();
+        $cakeSelected = DB::table('cake')->where('cake_id', $request->input('cake_id'))->get();
         $cart = session()->get('cart');
         if ($cart != null)
         {
@@ -99,26 +99,32 @@ class OrderController extends Controller
         session()->put('cart', $cart);
         return redirect('/cakes/menu');
     }
-    public function deleteFromCart($cake_id)
+    public function deleteFromCart(Request $request)
     {
         $cart = session()->get('cart');
-        unset($cart[$cake_id]);
+        unset($cart[$request->input('cake_id')]);
         session()->put('cart', $cart);
-        return redirect('/cart');
+        return response()->json([
+            'html' => view('cakes.cart', ['cart' => $cart])->render()
+        ]);
     }
-    public function decreaseCake($cake_id)
+    public function decreaseCake(Request $request)
     {
         $cart = session()->get('cart');
-        $cart[$cake_id]['quantity']--;
+        $cart[$request->input('cake_id')]['quantity']--;
         session()->put('cart', $cart);
-        return redirect('/cart');
+        return response()->json([
+            'html' => view('cakes.cart', ['cart' => $cart])->render()
+        ]);
     }
-    public function increaseCake($cake_id)
+    public function increaseCake(Request $request)
     {
         $cart = session()->get('cart');
-        $cart[$cake_id]['quantity']++;
+        $cart[$request->input('cake_id')]['quantity']++;
         session()->put('cart', $cart);
-        return redirect('/cart');
+        return response()->json([
+            'html' => view('cakes.cart', ['cart' => $cart])->render()
+        ]);
     }
     public function showRevenue()
     {
