@@ -62,19 +62,19 @@
                     <a href="/cakes/menu" class="btn btn-outline-success mb-3">Tiếp tục mua hàng</a>
                     <!-- Card -->
                     @foreach ($cart as $cakeID => $value)
-                        <div class="card cart-waiting w-100 border-0 mb-4" style="height: 180px;">
+                        <div class="card cart-waiting border-0 mb-4" style="max-width: 750px;">
                             <div class="card-body">
                                 <div class="row g-4">
                                     <!-- Hình nền -->
                                     <div class="col-md-4">
                                         <img src="{{ URL::to('./image/' . $value['image']) }}" alt=""
-                                            class="img-fluid" style="height: 150px; width: 300px; object-fit: cover;">
+                                            class="img-fluid">
                                     </div>
                                     <!-- Info -->
                                     <div class="col-md-4">
                                         <div class="row d-flex">
                                             <p class="text-capitalize fw-bold fs-5">{{ $value['cake_name'] }}</p>
-                                            <p style="width: 250px; color: darkgray;">{{ $value['note'] }}</p>
+                                            <p style="color: darkgray;">{{ $value['note'] }}</p>
                                         </div>
                                     </div>
                                     <!-- Chỉnh sửa -->
@@ -95,7 +95,7 @@
                                                     </svg>
                                                 </button>
                                             </form>
-                                            <span id="quantity">{{ $value['quantity'] }}</span>
+                                            <span id="quantity" class="mt-1">{{ $value['quantity'] }}</span>
                                             <form method="POST" action="/cart/increase/{{ $cakeID }}">
                                                 @csrf
                                                 @method('PATCH')
@@ -109,7 +109,7 @@
                                                     </svg>
                                                 </button>
                                             </form>
-                                            <span class="fs-5">{{ $value['price'] }}</span>
+                                            <span class="fs-4 mt-1">{{ $value['price'] }}</span>
                                             <form method="POST" action="/cart/delete/{{ $cakeID }}">
                                                 @csrf
                                                 @method('DELETE')

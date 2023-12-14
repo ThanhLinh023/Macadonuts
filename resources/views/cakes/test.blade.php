@@ -1,15 +1,5 @@
-@extends('layouts.app')
-@section('title', 'Menu')
-@section('content')
-
-    <section class="option-bar bg-dark text-warning pt-5 pb-0 mt-5">
-        <div class="container tex-md-left">
-            <div class="row tex-center text-md-left">
-                hello
-            </div>
-        </div>
-    </section>
-
+    
+<html></html>    
     <body>
         <header>
             <a href="#" class="logo">ActiveLink.</a>
@@ -110,4 +100,3 @@
             });
         };
     </script>
-@endsection
