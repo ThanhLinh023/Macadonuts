@@ -35,3 +35,6 @@
 
 #### Run the Code
 - Continue in the terminal where you cloned the Git repository.
+- Run serve: `php artisan serve`
+  ## Demo
+  

@@ -6,11 +6,6 @@
             display: flex;
         }
 
-        .img {
-            width: 650px;
-            height: 500px;
-        }
-
         form {
             display: block;
             flex: auto;
@@ -32,11 +27,12 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-lg-2 g-5 mb-5 mt-5">
             <div class="col-lg-6">
-                <img class="img rounded shadow-lg" src="{{ URL::to('./image/bg_login_register.jpg') }}" alt="">
+                <img class="rounded img-fluid shadow-lg" src="{{ URL::to('./image/bg_login_register.jpg') }}" alt=""
+                    style="height: 400px;">
             </div>
             <div class="col-lg-6" style="height: 500px;">
                 <section>
-                    <h2 style="font-family: Osward, sans-serif; margin-top: 100px; "><b>ĐĂNG NHẬP</b></h2>
+                    <h2 style="font-family: Osward, sans-serif;"><b>ĐĂNG NHẬP</b></h2>
                     <form class="mb-5" method="POST" action="/login" style="">
                         @csrf
                         <div class="mb-0 mt-0" style="">
