@@ -93,7 +93,8 @@ class CheckoutController extends Controller
         {
             header('Location: ' . $vnp_Url);
             die();
-        } else 
+        } 
+        else 
         {
             echo json_encode($returnData);
         }
