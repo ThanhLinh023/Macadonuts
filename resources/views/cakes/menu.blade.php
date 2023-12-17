@@ -196,16 +196,15 @@ function performSearch() {
         <div class="card sale-off-card  border-0" style="min-height: 340px;">
             <div class="card-body" >
                 <img src="/image/${cake.image}" alt="" class="card-img-top category-images">
-                <div class="row d-flex justify-content-center mt-2">
-                    <p class="col-7 name-cake fs-5 fw-semibold">${cake.cake_name}</p>
-                    <div class="col-5" style="line-height: 22px;">
-                        ${cake.discount_price
-                            ? `<span class="fs-4 fw-semibold text-danger d-flex justify-content-end">${cake.discount_price}</span>`
-                            : ''}
-                            <span class="fs-5 fw-semibold text-danger d-flex justify-content-end">${cake.price}</span>
-                            
-                    </div>
-                </div>
+               <div class="row d-flex justify-content-center mt-2">
+    <p class="col-7 name-cake fs-5 fw-semibold">${cake.cake_name}</p>
+    <div class="col-5" style="line-height: 22px;">
+        ${cake.discount_price
+            ? `<span class="fs-4 fw-semibold text-danger d-flex justify-content-end">${cake.discount_price}</span>
+               <span class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">${cake.price}</span>`
+            : `<span class="fs-4 fw-semibold text-danger d-flex justify-content-end">${cake.price}</span>`}
+    </div>
+</div>
                 <form id="add-to-cart-form-${cake.cake_id}" method="POST" action="/cart/add/${cake.cake_id}">
                     <input type="hidden" name="_token" value="${cake.csrf_token}">
                     <button ${cake.user_role === 1 ? 'disabled' : ''} type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6" id="add-to-cart-btn" data-cake_id="${cake.cake_id}"> Thêm </button>
