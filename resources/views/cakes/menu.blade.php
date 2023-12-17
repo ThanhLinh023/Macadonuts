@@ -99,6 +99,10 @@
             height: 250px;
             object-fit: cover;
         }
+
+        .searchResults {
+            display: inline-block;
+        }
     </style>
 
     <!-- Thanh lựa chọn -->
@@ -143,6 +147,108 @@
     </section>
     <!-- KHUYẾN MÃI -->
     <div id="khuyenMai" class="container">
+
+        <div class="input-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm">
+            <button class="btn btn-outline-secondary" type="button" id="searchButton"> <svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg> </i></button>
+        </div>
+
+        <div id="searchResults">
+
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('#searchButton').on('click', function() {
+
+                    var searchText = $('#searchInput').val();
+                   
+                    $.ajax({
+                        url: '{{ route('search') }}', 
+                        method: 'GET',
+                        data: {
+                            search: searchText
+                        },
+                        success: function(data) {
+                            displaySearchResults(data);
+                        },
+                        error: function(error) {
+                            console.error('Lỗi khi thực hiện tìm kiếm:', error);
+                        }
+                    });
+                });
+            });
+        
+            function displayCake(cake) {
+                var html = `
+       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7 mb-4">
+        <div class="card sale-off-card  border-0" style="min-height: 340px;">
+            <div class="card-body" >
+                <img src="/image/${cake.image}" alt="" class="card-img-top category-images">
+                <div class="row d-flex justify-content-center mt-2">
+                    <p class="col-7 name-cake fs-5 fw-semibold">${cake.cake_name}</p>
+                    <div class="col-5" style="line-height: 22px;">
+                        ${cake.discount_price
+                            ? `<span class="fs-4 fw-semibold text-danger d-flex justify-content-end">${cake.discount_price}</span>`
+                            : ''}
+                            <span class="fs-5 fw-semibold text-danger d-flex justify-content-end">${cake.price}</span>
+                            
+                    </div>
+                </div>
+                <form id="add-to-cart-form-${cake.cake_id}" method="POST" action="/cart/add/${cake.cake_id}">
+                    <input type="hidden" name="_token" value="${cake.csrf_token}">
+                    <button ${cake.user_role === 1 ? 'disabled' : ''} type="submit" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6" id="add-to-cart-btn" data-cake_id="${cake.cake_id}"> Thêm </button>
+                </form>
+            </div>  
+        </div>
+    </div>
+`;
+                return html;
+            }
+
+            $(document).ready(function() {
+                $('#searchResults').on('click', '#add-to-cart-btn', function() {
+                    event.preventDefault();
+                    var cake_id = $(this).data('cake_id');
+                    $.ajax({
+                        url: '/cart/add/' + cake_id,
+                        type: 'POST',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            'cake_id': cake_id
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        }
+
+                    });
+                });
+            });
+
+            function displaySearchResults(results) {
+                var resultsContainer = $('#searchResults');
+                resultsContainer.empty(); 
+
+                if (results.length > 0) {
+                    resultsContainer.append('<h3>Kết quả tìm kiếm:</h3>');
+                    results.forEach(function(cake) {
+                        var html = displayCake(cake);
+                        var productElement = $(html).addClass('searchResults');
+                        resultsContainer.append(productElement);
+
+                    });
+
+                } else {
+                    resultsContainer.append('<p>Không có sản phẩm nào được tìm thấy.</p>');
+                }
+            }
+        </script>
+
         <div class="row mb-3">
             <p id="scrollspyHeading1" class="h3 text-sm-start text-md-start text-uppercase fw-bolder text-black">
                 KHUYẾN MÃI
@@ -160,56 +266,60 @@
         </div>
 
         <div class="row mb-3">
-                @foreach ($discount as $dis)
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7 mb-4">
-                        <div class="card sale-off-card  border-0" style="min-height: 340px;">
-                            <div class="card-body">
-                                <img src="{{ URL::to('./image/' . $dis->image) }}" alt="" class="card-img-top category-images"
-                                    style="">
-                                <div class="row d-flex justify-content-center mt-2">
-                                    <p class="col-7 name-cake fs-5 fw-semibold" style="">{{ $dis->cake_name }}</p>
-                                    <div class="col-5" style="line-height: 22px;">
-                                        <span class="fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $dis->discount_price }}</span>
-                                        <span class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">{{ $dis->price }}</span>
-                                    </div>
+            @foreach ($discount as $dis)
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7 mb-4">
+                    <div class="card sale-off-card  border-0" style="min-height: 340px;">
+                        <div class="card-body">
+                            <img src="{{ URL::to('./image/' . $dis->image) }}" alt=""
+                                class="card-img-top category-images" style="">
+                            <div class="row d-flex justify-content-center mt-2">
+                                <p class="col-7 name-cake fs-5 fw-semibold" style="">{{ $dis->cake_name }}</p>
+                                <div class="col-5" style="line-height: 22px;">
+                                    <span
+                                        class="fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $dis->discount_price }}</span>
+                                    <span
+                                        class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">{{ $dis->price }}</span>
                                 </div>
-                                @auth
-                                    <form>
-                                        @csrf
-                                        <input type="hidden" value="{{ $dis->cake_id }}" class="cake_{{ $dis->cake_id }}">
-                                        <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button" data-id="{{ $dis->cake_id }}" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
-                                    </form>
-                                @endauth
-                                @if (auth()->user() && auth()->user()->user_role == 1)
-                                    <a href="/cakes/{{ $dis->cake_name }}/modify">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                            <path
-                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                            <path fill-rule="evenodd"
-                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                        </svg>
-                                    </a>
-                                    <div class="trash_btn">
-                                        <form method="POST" action="/cakes/delete/{{ $dis->cake_name }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="trash_btn-children">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                                                </svg>
-                                            </button>
-                                        </form>
-                                    </div>
-                                @endif
                             </div>
+                            @auth
+                                <form>
+                                    @csrf
+                                    <input type="hidden" value="{{ $dis->cake_id }}" class="cake_{{ $dis->cake_id }}">
+                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button"
+                                        data-id="{{ $dis->cake_id }}"
+                                        class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
+                                </form>
+                            @endauth
+                            @if (auth()->user() && auth()->user()->user_role == 1)
+                                <a href="/cakes/{{ $dis->cake_name }}/modify">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd"
+                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                    </svg>
+                                </a>
+                                <div class="trash_btn">
+                                    <form method="POST" action="/cakes/delete/{{ $dis->cake_name }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="trash_btn-children">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
+        </div>
 
     </div>
 
@@ -238,17 +348,20 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7 mb-4">
                     <div class="card sale-off-card border-0" style="min-height: 340px;">
                         <div class="card-body">
-                            <img src="{{ URL::to('./image/' . $mar->image) }}" alt="" class="img-fluid card-img-top category-images"
-                                style="">
+                            <img src="{{ URL::to('./image/' . $mar->image) }}" alt=""
+                                class="img-fluid card-img-top category-images" style="">
                             <div class="row d-flex justify-content-center mt-2">
                                 <p class="col-7 name-cake fs-5 fw-semibold">{{ $mar->cake_name }}</p>
-                                <span class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}</span>
+                                <span
+                                    class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}</span>
                             </div>
                             @auth
                                 <form>
                                     @csrf
                                     <input type="hidden" value="{{ $mar->cake_id }}" class="cake_{{ $mar->cake_id }}">
-                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button" data-id="{{ $mar->cake_id }}" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
+                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button"
+                                        data-id="{{ $mar->cake_id }}"
+                                        class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
                                 </form>
                             @endauth
                             @if (auth()->user() && auth()->user()->user_role == 1)
@@ -299,22 +412,25 @@
             </p>
         </div>
 
-            <div class="row mb-3">
-                @foreach ($donuts as $don)
+        <div class="row mb-3">
+            @foreach ($donuts as $don)
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7 mb-4">
                     <div class="card sale-off-card border-0" style="min-height: 340px;">
                         <div class="card-body">
-                            <img src="{{ URL::to('./image/' . $don->image) }}" alt="" class="img-fluid card-img-top category-images"
-                                style="">
+                            <img src="{{ URL::to('./image/' . $don->image) }}" alt=""
+                                class="img-fluid card-img-top category-images" style="">
                             <div class="row d-flex justify-content-center mt-2">
                                 <p class="col-7 name-cake fs-5 fw-semibold">{{ $don->cake_name }}</p>
-                                <span class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}</span>
+                                <span
+                                    class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}</span>
                             </div>
                             @auth
                                 <form>
                                     @csrf
                                     <input type="hidden" value="{{ $don->cake_id }}" class="cake_{{ $don->cake_id }}">
-                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button" data-id="{{ $don->cake_id }}" class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
+                                    <button {{ auth()->user()->user_role == 1 ? 'disabled' : '' }} type="button"
+                                        data-id="{{ $don->cake_id }}"
+                                        class="btn btn-danger d-grid gap-2 col-6 mx-auto fs-6 addToCart">Thêm</button>
                                 </form>
                             @endauth
                             @if (auth()->user() && auth()->user()->user_role == 1)
@@ -343,9 +459,9 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
-            </div>
+            @endforeach
         </div>
+    </div>
     </div>
 
     <script>

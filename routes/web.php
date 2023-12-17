@@ -6,6 +6,7 @@ use App\Http\Controllers\CakeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\SearchController;
 
 //--------------------------Authentication-----------------------------
 //Profile
@@ -92,3 +93,4 @@ Route::get('/securitypolicy', function () {
 route::get('/test', function () {
     return view('cakes.test');
 });
+Route::get('/search', [SearchController::class, 'search'])->name('search');
