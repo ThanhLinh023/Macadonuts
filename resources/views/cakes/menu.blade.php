@@ -164,24 +164,30 @@
 
         <script>
             $(document).ready(function() {
-                $('#searchButton').on('click', function() {
+                $('#searchButton').on('click', performSearch);
+$('#searchInput').on('keyup', function(event) {
+    if (event.keyCode === 13) {
+        performSearch();
+    }
+});
 
-                    var searchText = $('#searchInput').val();
-                   
-                    $.ajax({
-                        url: '{{ route('search') }}', 
-                        method: 'GET',
-                        data: {
-                            search: searchText
-                        },
-                        success: function(data) {
-                            displaySearchResults(data);
-                        },
-                        error: function(error) {
-                            console.error('Lỗi khi thực hiện tìm kiếm:', error);
-                        }
-                    });
-                });
+function performSearch() {
+    var searchText = $('#searchInput').val();
+
+    $.ajax({
+        url: '{{ route('search') }}',
+        method: 'GET',
+        data: {
+            search: searchText
+        },
+        success: function(data) {
+            displaySearchResults(data);
+        },
+        error: function(error) {
+            console.error('Lỗi khi thực hiện tìm kiếm:', error);
+        }
+    });
+}
             });
         
             function displayCake(cake) {
