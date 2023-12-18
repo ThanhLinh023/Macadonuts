@@ -136,9 +136,9 @@
                 </div>
 
                 <!-- Thông tin chi tiết -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 mt-lg-5 mt-sm-0 mb-3">
                     <br> <br>
-                    <div class="card cart_info-detail w-75 border-0" style="height: 340px;">
+                    <div class="card cart_info-detail border-0" style="min-height: 340px; max-width: 300px;">
                         <div class="card-body">
                             <h6 class="text-uppercase fw-bold">{{ count($cart) }} món</h3>
                                 <h6 class="fw-bold mt-3">Bạn có mã giảm giá?</h6>
@@ -146,11 +146,11 @@
                                 <div>
                                     <form method="POST" action="/voucher/apply" class="row d-flex">
                                         @csrf
-                                        <div class="col-7 w-75">
+                                        <div class="col-7">
                                             <input name="voucher_code" type="text" class="form-control"
                                                 value="{{ old('voucher_code') }}">
                                         </div>
-                                        <button type="submit" class="col-5 btn btn-dark w-25" style="font-size: small;">Áp
+                                        <button type="submit" class="col-5 btn btn-dark" style="font-size: small;">Áp
                                             dụng</button>
                                     </form>
                                     @if ($errors->has('invalid'))
