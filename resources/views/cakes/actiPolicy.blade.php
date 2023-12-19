@@ -9,7 +9,7 @@
 
     <body>
         <div class="container">
-            <h1 style="text-align: center;margin-top: 50px;"><b>CHÍNH SÁCH HOẠT ĐỘNG</b></h1>
+            <h1 style="text-align: center;margin-top: 150px;"><b>CHÍNH SÁCH HOẠT ĐỘNG</b></h1>
             <h3 style="margin-top: 50px;"><i><b>1. Hướng dẫn đặt phần ăn</b></i></h3>
             <p>Để đặt phần bánh trên website <a href="" style="color: black;"><b>maccadonuts.com.vn/ứng dụng điện
                         thoại</b></a>, Khách hàng có thể thực hiện theo 02 cách thức như sau:</p>

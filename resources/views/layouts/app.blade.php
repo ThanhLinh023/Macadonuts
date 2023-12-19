@@ -101,11 +101,9 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/cakes/menu">Menu</a>
                     </li>
-                    @if (auth()->user() && auth()->user()->user_role == 1)
-                        <li class="nav-item">
-                            <a class="nav-link" href="/voucher/add">Khuyến mãi</a>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="/voucher">Mã khuyến mãi</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link about-us" href="/aboutus">Về chúng tôi</a>
                     </li>
@@ -135,25 +133,6 @@
                             </div>
                         </li>
                     @endunless
-
-                    {{-- 3 GẠCH --}}
-                    {{-- <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <svg width="34" viewBox="0 0 26 22" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_20_84)">
-                                    <path
-                                        d="M13 9.91667V9H31.4167V9.91667H13ZM31.4167 13.5833V14.5H13V13.5833H31.4167ZM13 18.1667H31.4167V19.0833H13V18.1667Z"
-                                        fill="black" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_20_84">
-                                        <rect width="26" height="22" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </a>
-                    </li> --}}
             </ul>
         </div>
     </div>
@@ -161,28 +140,6 @@
 {{-- CONTENT --}}
 @yield('content')
 
-<!-- Modal -->
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có chắc chắn muốn xoá?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                    <form method="POST" action="/test_delete">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Xoá</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 <footer class="bg-dark text-white pt-5 pb-4">
     <div class="container tex-md-left">
         <div class="row tex-center text-md-left">

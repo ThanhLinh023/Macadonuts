@@ -68,7 +68,7 @@ Route::patch('/cart/increase', [OrderController::class, 'increaseCake']);
 //Apply voucher to discount
 Route::post('/voucher/apply', [VoucherController::class, 'applyVoucher']);
 //Show add voucher form 
-Route::get('/voucher/add', [VoucherController::class, 'addVoucherForm'])->middleware('admin');
+Route::get('/voucher', [VoucherController::class, 'addVoucherForm']);
 //Store voucher
 Route::post('/voucher/store', [VoucherController::class, 'storeVoucher']);
 //Show revenue report

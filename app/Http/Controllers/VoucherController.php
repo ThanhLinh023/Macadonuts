@@ -34,7 +34,9 @@ class VoucherController extends Controller
     }
     public function addVoucherForm()
     {
-        return view('order.addVoucher');
+        return view('order.addVoucher', [
+            'vouchers' => VouchersModel::all()
+        ]);
     }
     public function storeVoucher(Request $request)
     {
