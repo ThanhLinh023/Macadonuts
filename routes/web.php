@@ -94,4 +94,8 @@ route::get('/test', function () {
     return view('cakes.test');
 });
 
+route::get('/news', function () {
+    return view('cakes.news');
+});
+
 Route::get('/search', [SearchController::class, 'search'])->name('search');

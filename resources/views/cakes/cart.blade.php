@@ -109,7 +109,7 @@
                                                     </svg>
                                                 </button>
                                             </form>
-                                            <span class="fs-4 mt-1">{{ $value['price'] }}</span>
+                                            <span class="fs-4 mt-1">{{ $value['price'] }}₫</span>
                                             <form>
                                                 @csrf
                                                 <input type="hidden" value="{{ $cakeID }}" class="cake_{{ $cakeID }}">
@@ -161,7 +161,7 @@
                                 <div class="cost mt-4">
                                     <div class="d-flex flex-row justify-content-between">
                                         <span class="fw-semibold">Tổng đơn hàng</span>
-                                        <span class="fw-bold">{{ $toMoney }}</span>
+                                        <span class="fw-bold">{{ $toMoney }}₫</span>
                                     </div>
                                     @if ($total_money >= session()->get('minOrder') && session()->get('check') == true)
                                         @php
@@ -175,12 +175,12 @@
                                         </div>
                                         <div class="d-flex flex-row justify-content-between">
                                             <span class="fw-semibold">Tổng thanh toán</span>
-                                            <span class="fw-bold">{{ number_format($total_money, 0, ',', '.') }}</span>
+                                            <span class="fw-bold">{{ number_format($total_money, 0, ',', '.') }}₫</span>
                                         </div>
                                     @else
                                         <div class="d-flex flex-row justify-content-between">
                                             <span class="fw-semibold">Tổng thanh toán</span>
-                                            <span class="fw-bold">{{ $toMoney }}</span>
+                                            <span class="fw-bold">{{ $toMoney }}₫</span>
                                         </div>
                                     @endif
                                     <form method="POST" action="/VNPay_Payment">

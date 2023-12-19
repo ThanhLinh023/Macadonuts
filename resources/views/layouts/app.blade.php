@@ -147,17 +147,20 @@
             <div class="col-md-2 col-lg-2 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Danh mục món ăn</h5>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">Macaron</a>
+                    <a href="/cakes/menu" class="text-white" style="text-decoration: none;">Khuyến mãi</a>
                 </p>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">Donut</a>
+                    <a href="/cakes/menu" class="text-white" style="text-decoration: none;">Macaron</a>
+                </p>
+                <p>
+                    <a href="/cakes/menu" class="text-white" style="text-decoration: none;">Donut</a>
                 </p>
             </div>
 
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Về chúng tôi</h5>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">Câu chuyện</a>
+                    <a href="/aboutus" class="text-white" style="text-decoration: none;">Câu chuyện</a>
                 </p>
                 <p>
                     <a href="#" class="text-white" style="text-decoration: none;">Tin tức</a>
@@ -214,7 +217,7 @@
                 <div class="text-center text-md-right">
                     <ul class="list-unstyled list-inline">
                         <li class="list-inline-item">
-                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                            <a href="https://www.facebook.com/DanhGiaThongTinCongNghe.MoiMe.Telectek" target="blank" class="btn-floating btn-sm text-white" style="font-size: 23px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                                     <path
@@ -223,7 +226,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                            <a href="https://www.instagram.com/real.zk09/" target="blank" class="btn-floating btn-sm text-white" style="font-size: 23px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
                                     <path
@@ -232,7 +235,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="" class="btn-floating btn-sm text-white" style="font-size: 23px;">
+                            <a href="https://www.youtube.com/channel/UCveUjdbEaSRESAMqv-bHD8w" target="blank" class="btn-floating btn-sm text-white" style="font-size: 23px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
                                     <path

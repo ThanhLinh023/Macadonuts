@@ -106,7 +106,7 @@
         </div>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <a href="">
+            <a href="/cakes/menu">
                 <div class="col category">
                     <div class="card category-card border-0">
                         <img src="{{ URL::to('./image/minhphucpic/newdish2.avif') }}" class="card-img-top category-images"
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             </a>
-            <a href="">
+            <a href="/cakes/menu">
                 <div class="col category">
                     <div class="card category-card border-0">
                         <img src="{{ URL::to('./image/minhphucpic/category-bakery.avif') }}"
@@ -131,7 +131,7 @@
                 </div>
             </a>
 
-            <a href="">
+            <a href="/cakes/menu">
                 <div class="col category">
                     <div class="card category-card border-0">
                         <img src="{{ URL::to('./image/minhphucpic/macaron-category.avif') }}"
@@ -158,9 +158,7 @@
                 <div class="card comment-card w-75 border-0" style="">
                     <div class="card-body">
                         <img src="{{ URL::to('./image/minhphucpic/vikhang.avif') }}" alt="" class="img-fluid">
-                        <p class="comment-text">To bring expertly crafted baked and brewed goods to our guests through a
-                            warm and
-                            welcoming enthusiasm.</p>
+                        <p class="comment-text">Macadonuts đã đem đến cho tôi một trải nghiệm có một không hai với sự nhiệt tình và chu đáo.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Vĩ Khang</h5>
                     </div>
                 </div>
@@ -169,8 +167,7 @@
                 <div class="card comment-card w-75 border-0 bg-dark-subtle" style="">
                     <div class="card-body">
                         <img src="{{ URL::to('./image/minhphucpic/bichchi.avif') }}" alt="" class="img-fluid">
-                        <p class="comment-text">To bring expertly crafted baked and brewed goods to our guests through a
-                            warm and welcoming.</p>
+                        <p class="comment-text">Món ăn ở đây thật tuyệt vời, tuy có 2 loại bánh nhưng sự tinh tế và cầu kì là tuyệt đối tốt.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Bích Chi</h5>
                     </div>
                 </div>
@@ -180,8 +177,7 @@
                     <div class="card-body">
                         <img src="{{ URL::to('./image/minhphucpic/thanhlinh.avif') }}" alt="" class="img-fluid"
                             style="height: 175px; width: 300px; object-fit: cover;">
-                        <p class="comment-text">To bring expertly crafted baked and brewed goods to our guests through a
-                            warm and welcoming.</p>
+                        <p class="comment-text">Tôi sẽ ghé lại Macadonuts vào một ngày không xa, chắc chắn là như vậy.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Thanh Linh</h5>
                     </div>
                 </div>
@@ -193,7 +189,7 @@
     <!-- NEWS -->
     <div class="container mt-5 mb-5 news-main" style="padding-top: 60px;">
         <div class="row mb-3">
-            <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder">News</p>
+            <p class="h3 text-sm-start text-md-start text-uppercase fw-bolder">TIN TỨC</p>
             <hr class="hr" style="border: 1px solid #767676;">
         </div>
 
@@ -203,10 +199,8 @@
                     <img src="{{ URL::to('./image/minhphucpic/newdish.avif') }}" class="card-img-top category-images"
                         alt="Danh mục 1">
                     <div class="card-body p-2">
-                        <h5 class="card-title text-capitalize">News</h5>
-                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
-                            thu hè
-                            này</p>
+                        <h5 class="card-title text-capitalize">TIN TỨC</h5>
+                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong thu hè này</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
@@ -216,10 +210,8 @@
                     <img src="{{ URL::to('./image/minhphucpic/category-bakery.avif') }}"
                         class="card-img-top category-images" alt="...">
                     <div class="card-body p-2">
-                        <h5 class="card-title text-capitalize">News</h5>
-                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
-                            thu hè
-                            này</p>
+                        <h5 class="card-title text-capitalize">TIN TỨC</h5>
+                        <p class="news-text mb-1">Donut mới của chúng tôi chuẩn bị ra mắt và mùa đông năm nay</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
@@ -229,10 +221,8 @@
                     <img src="{{ URL::to('./image/minhphucpic/macaron-category.avif') }}"
                         class="card-img-top category-images" alt="...">
                     <div class="card-body p-2">
-                        <h5 class="card-title text-capitalize">News</h5>
-                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
-                            thu hè
-                            này</p>
+                        <h5 class="card-title text-capitalize">TIN TỨC</h5>
+                        <p class="news-text mb-1">Thông tin khuyến mãi từ MACADONUTS trong quý cuối năm</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>

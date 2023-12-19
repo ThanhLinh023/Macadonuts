@@ -37,8 +37,8 @@
                     @foreach ($order as $o)
                         <table class="table table-hover" style="text-align: center; align-items:center; width: 75%;">
                             <thead>
-                                <tr class="table-warning" style="text-align: center">
-                                    <th scope="col" style="vertical-align: middle"></th>
+                                <tr class="table" style="text-align: center">
+                                    <th scope="col" style="vertical-align: middle">#</th>
                                     <th scope="col" style="vertical-align: middle">Sản phẩm</th>
                                     <th scope="col" style="vertical-align: middle">Số lượng</th>
                                     <th scope="col" style="vertical-align: middle">Giá bán</th>
@@ -60,17 +60,17 @@
                                                     <img src="{{ URL::to('./image/' . $od->image) }}" alt="" class="img-fluid rounded"
                                                          style="width: 50px; object-fit: cover;">
                                                 </td>
-                                                <td>
-                                                    <p>{{ $od->cake_name }}</p>
+                                                <td style="vertical-align: middle">
+                                                    {{ $od->cake_name }}
                                                 </td>
-                                                <td>
+                                                <td style="vertical-align: middle">
                                                     {{ $od->quantity }}
                                                 </td>
-                                                <td>
-                                                    <p>{{ $od->price }}</p>
+                                                <td style="vertical-align: middle">
+                                                    {{ $od->price }}₫
                                                 </td>
-                                                <td>
-                                                    {{ $od->total }}
+                                                <td style="vertical-align: middle">
+                                                    {{ $od->total }}₫
                                                 </td>
                                             </tr>
                                         @endif
@@ -88,7 +88,7 @@
                         <div class="summary mb-3" style="width: 75%;">
                             <span class="fw-semibold" style="padding-right: 20px; display: flex; float: right;">
                                 $ Tổng thanh toán:
-                                <span style="margin-left: 7px">{{ $o->total_money }}</span>
+                                <span style="margin-left: 7px">{{ $o->total_money }}₫</span>
                                 <br> <br>
                             </span>
                         </div>

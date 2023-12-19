@@ -13,19 +13,19 @@
         @unless ($query->isEmpty()) 
             <table class="table table-striped table-hover" style="margin-bottom: 167px">
                 <thead>
-                    <tr class="table-warning">
+                    <tr class="table" style="text-align:center;">
                         <th scope="col">User's ID</th>
                         <th scope="col">User's Name</th>
                         <th scope="col">Số lượng hoá đơn</th>
-                        <th scope="col"></th>
+                        <th scope="col">#</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($query as $q)
-                        <tr>
+                        <tr style="text-align: center;">
                             <th scope="row">{{ $q->user_id }}</th>
                             <td>{{ $q->name }}</td>
-                            <td>{{ $q->sld }}</td>
+                            <td style="text-align: center;">{{ $q->sld }}</td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center gap-4 link-danger mt-1">
                                     <form method="POST" action="">

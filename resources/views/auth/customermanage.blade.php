@@ -9,11 +9,11 @@
     </section>
 
     <div class="container mt-5 mb-5">
-        <h1 style="margin: 20px 0 20px 5px" class="text-capitalize">Customer Management</h1>
+        <h1 style="margin: 20px 0 20px 5px" class="text-capitalize">Quản Lý Khách Hàng</h1>
         @unless ($users->isEmpty())
             <table class="table table-striped table-hover" style="margin-bottom: 167px">
                 <thead>
-                    <tr class="table-warning">
+                    <tr class="table">
                         <th scope="col">User's ID</th>
                         <th scope="col">User's Name</th>
                         <th scope="col">Phone</th>
