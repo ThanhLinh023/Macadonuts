@@ -8,15 +8,15 @@
 </style>
 
 <body>
-    
-    <div class="container">
-        <img src="anhmanhinh.jpg" alt="" style="text-align: center; width: 100%; height: auto; ">
+    <div class="" style="height: 50px;">
+        <img src="{{ URL::to('./image/macaron.jpg') }}" alt="macaron" style="width: 100%; height: 600px; object-fit:cover;">
     </div>
-    <div class="container" style="text-align: center; width: 700px; margin-top: 100px;">
+    
+    <div class="container text-light" style="text-align: center; width: 700px; margin-top: 250px;">
         <p style="font-size: 20px;font-family: 'Fredericka the Great',cursive;">Where smiles are served daily</p>
         <p style="font-size: 18px;font-family: 'Fraunces';">Enjoy delicious pastries, warm breads, stunning cakes and expertly brewed drinks while feeling right at home.</p>
     </div>
-    <div class="container row" style="margin-top: 150px;" >
+    <div class="container row text-light" style="margin-top: 60px;" >
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <p style="font-size: 15px;font-family: 'Fredericka the Great',cursive;">Our mission</p>

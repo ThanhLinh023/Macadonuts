@@ -103,6 +103,18 @@
         .searchResults {
             display: inline-block;
         }
+
+        .cake-info {
+            color: darkgray;
+            margin-top: 4px;
+            line-height: 1.4rem;
+            height: 66px;
+            overflow: hidden;
+            display: block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
     </style>
 
     <section class="option-bar bg-dark text-warning pt-5 pb-0 mt-5">
@@ -193,6 +205,9 @@
                                             <span class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">${cake.price}</span>`
                                             : `<span class="fs-4 fw-semibold text-danger d-flex justify-content-end">${cake.price}</span>`}
                                     </div>
+                                    <div class="row">
+                                        <p class="cake-info">${cake.note}</p>
+                                    </div>
                                 </div>
                                 <form id="add-to-cart-form-${cake.cake_id}" method="POST" action="/cart/add/${cake.cake_id}">
                                     <input type="hidden" name="_token" value="${cake.csrf_token}">
@@ -275,10 +290,13 @@
                                         </p>
                                         <div class="col-5" style="line-height: 22px;">
                                             <span
-                                                class="fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $dis->discount_price }}</span>
+                                                class="fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $dis->discount_price }}₫</span>
                                             <span
-                                                class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">{{ $dis->price }}</span>
+                                                class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">{{ $dis->price }}₫</span>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <p class="cake-info">{{ $dis->note }}</p>
                                     </div>
                                     @auth
                                         <form>
@@ -352,7 +370,10 @@
                                     <div class="row d-flex justify-content-center mt-2">
                                         <p class="col-7 name-cake fs-5 fw-semibold">{{ $mar->cake_name }}</p>
                                         <span
-                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}</span>
+                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}₫</span>
+                                    </div>
+                                    <div class="row">
+                                        <p class="cake-info">{{ $mar->note }}</p>
                                     </div>
                                     @auth
                                         <form>
@@ -423,7 +444,10 @@
                                     <div class="row d-flex justify-content-center mt-2">
                                         <p class="col-7 name-cake fs-5 fw-semibold">{{ $don->cake_name }}</p>
                                         <span
-                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}</span>
+                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}₫</span>
+                                    </div>
+                                    <div class="row">
+                                        <p class="cake-info">{{ $don->note }}</p>
                                     </div>
                                     @auth
                                         <form>
@@ -497,9 +521,12 @@
                                         </p>
                                         <div class="col-5" style="line-height: 22px;">
                                             <span
-                                                class="fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $dis->discount_price }}</span>
+                                                class="fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $dis->discount_price }}₫</span>
                                             <span
-                                                class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">{{ $dis->price }}</span>
+                                                class="fs-5 fw-semibold text-decoration-line-through d-flex justify-content-end">{{ $dis->price }}₫</span>
+                                        </div>
+                                        <div class="row">
+                                            <p class="cake-info">{{ $dis->note }}</p>
                                         </div>
                                     </div>
                                     @auth
@@ -576,7 +603,10 @@
                                     <div class="row d-flex justify-content-center mt-2">
                                         <p class="col-7 name-cake fs-5 fw-semibold">{{ $mar->cake_name }}</p>
                                         <span
-                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}</span>
+                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $mar->price }}₫</span>
+                                    </div>
+                                    <div class="row">
+                                        <p class="cake-info">{{ $mar->note }}</p>
                                     </div>
                                     @auth
                                         <form>
@@ -649,7 +679,10 @@
                                     <div class="row d-flex justify-content-center mt-2">
                                         <p class="col-7 name-cake fs-5 fw-semibold">{{ $don->cake_name }}</p>
                                         <span
-                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}</span>
+                                            class="col-5 fs-4 fw-semibold text-danger d-flex justify-content-end">{{ $don->price }}₫</span>
+                                    </div>
+                                    <div class="row">
+                                        <p class="cake-info">{{ $don->note }}</p>
                                     </div>
                                     @auth
                                         <form>

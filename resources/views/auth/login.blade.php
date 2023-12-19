@@ -63,10 +63,10 @@
                                     Nhớ mật khẩu
                                 </label>
                             </div>
-                            <p style="">Bạn quên mật khẩu?</p>
+                            {{-- <p style="">Bạn quên mật khẩu?</p> --}}
                         </div>
-                        <button type="submit" class="btn btn-success" style=" width: 550px; border-radius: 30px;">Đăng nhập</button>
-                        <p style="margin-left: 320px; margin-top: 20px;">Bạn chưa có tài khoản? <a href="/register"><b>Đăng ký
+                        <button type="submit" class="btn btn-success mt-3" style="width: 520px; border-radius: 30px;">Đăng nhập</button>
+                        <p style="margin-left: 250px; margin-top: 20px;">Bạn chưa có tài khoản? <a href="/register"><b>Đăng ký
                                 </b></a></p>
                     </form>
                 </section>
