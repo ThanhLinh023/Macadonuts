@@ -318,10 +318,10 @@
                                             </svg>
                                         </a>
                                         <div class="trash_btn">
-                                            <form method="POST" action="/cakes/delete/{{ $dis->cake_name }}">
+                                            <form>
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="trash_btn-children">
+                                                <input type="hidden" value="{{ $dis->cake_id }}" class="cake_{{ $dis->cake_id }}">
+                                                <button type="button" class="trash_btn-children deleteCake" data-id="{{ $dis->cake_id }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
                                                         data-bs-target="#exampleModal" viewBox="0 0 16 16">
@@ -395,10 +395,10 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                             </svg>
                                         </a>
-                                        <form method="POST" action="/cakes/delete/{{ $mar->cake_name }}">
+                                        <form>
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="trash_btn-children">
+                                            <input type="hidden" value="{{ $mar->cake_id }}" class="cake_{{ $mar->cake_id }}">
+                                            <button type="button" class="trash_btn-children deleteCake" data-id="{{ $mar->cake_id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" viewBox="0 0 16 16">
@@ -469,10 +469,10 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                             </svg>
                                         </a>
-                                        <form method="POST" action="/cakes/delete/{{ $don->cake_name }}">
+                                        <form>
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="trash_btn-children">
+                                            <input type="hidden" value="{{ $don->cake_id }}" class="cake_{{ $don->cake_id }}">
+                                            <button type="button" class="trash_btn-children deleteCake" data-id="{{ $don->cake_id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" viewBox="0 0 16 16">
@@ -550,10 +550,10 @@
                                             </svg>
                                         </a>
                                         <div class="trash_btn">
-                                            <form method="POST" action="/cakes/delete/{{ $dis->cake_name }}">
+                                            <form>
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="trash_btn-children">
+                                                <input type="hidden" value="{{ $dis->cake_id }}" class="cake_{{ $dis->cake_id }}">
+                                                <button type="button" class="trash_btn-children deleteCake" data-id="{{ $dis->cake_id }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
                                                         data-bs-target="#exampleModal" viewBox="0 0 16 16">
@@ -628,10 +628,10 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                             </svg>
                                         </a>
-                                        <form method="POST" action="/cakes/delete/{{ $mar->cake_name }}">
+                                        <form>
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="trash_btn-children">
+                                            <input type="hidden" value="{{ $mar->cake_id }}" class="cake_{{ $mar->cake_id }}">
+                                            <button type="button" class="trash_btn-children deleteCake" data-id="{{ $mar->cake_id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" viewBox="0 0 16 16">
@@ -704,10 +704,10 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                             </svg>
                                         </a>
-                                        <form method="POST" action="/cakes/delete/{{ $don->cake_name }}">
+                                        <form>
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="trash_btn-children">
+                                            <input type="hidden" value="{{ $don->cake_id }}" class="cake_{{ $don->cake_id }}">
+                                            <button type="submit" class="trash_btn-children deleteCake" data-id="{{ $don->cake_id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash3" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal" viewBox="0 0 16 16">

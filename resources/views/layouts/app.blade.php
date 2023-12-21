@@ -349,5 +349,25 @@
         })
     })
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.deleteCake').click(function () {
+            var cake_id = $(this).data('id');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: '{{ url('/cakes/deleteCake') }}',
+                method: 'DELETE',
+                data: {
+                    _token: _token,
+                    cake_id: cake_id
+                },
+                success: function (response) {
+                    swal("Đã xóa bánh", "","success");
+                    $("body").html(response.html);
+                }
+            });
+        })
+    })
+</script>
 
 </html>

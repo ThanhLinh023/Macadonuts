@@ -99,4 +99,43 @@ class CheckoutController extends Controller
             echo json_encode($returnData);
         }
     }
+    public function chooseLocationForm()
+    {
+        return view('order.payment');
+    }
+    public function calculateFee(Request $request)
+    {
+        session()->put('fee', -1);
+        $this->validate($request, [
+            'address' => 'required',
+            'district' => 'required'
+        ]);
+        $shipFee = [
+            '1' => 30000,
+            '3' => 30000,
+            '4' => 30000,
+            '5' => 40000,
+            '6' => 40000,
+            '7'	=> 40000,
+            '8'	=> 30000,
+            '9' => 0,
+            '10' => 40000,
+            '11' => 40000,
+            '12' =>	50000,
+            'ThuDuc' => 0,
+            'BinhThanh' => 30000,
+            'BinhTan' => 40000,
+            'GoVap' => 40000,
+            'PhuNhuan' => 30000,
+            'TanBinh' => 40000,
+            'TanPhu' =>	50000,
+            'NhaBe' => 50000,
+            'CuChi' => 60000,
+            'CanGio' =>	60000,
+            'BinhChanh' => 60000,
+            'HocMon' =>	50000
+        ];
+        $fee = $shipFee[$request->district];
+        return redirect('/cart')->with('fee', $fee);
+    }
 }

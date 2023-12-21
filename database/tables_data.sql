@@ -50,4 +50,31 @@ begin
 end;
 //
 DELIMITER ;
+-- Update total_money when delete an order detail
+DELIMITER //
+CREATE TRIGGER after_delete_order_detail
+AFTER DELETE ON order_detail
+FOR EACH ROW
+BEGIN
+    DECLARE current_total_money int;
+
+    SELECT total_money INTO current_total_money
+    FROM cake_order
+    WHERE order_id = OLD.order_id;
+
+    UPDATE cake_order
+    SET total_money = current_total_money - OLD.total
+    WHERE order_id = OLD.order_id;
+    
+    IF NOT EXISTS (
+        SELECT 1
+        FROM order_detail
+        WHERE order_id = OLD.order_id
+    ) THEN
+        DELETE FROM cake_order
+        WHERE order_id = OLD.order_id;
+    END IF;
+END;
+//
+DELIMITER ;
 -- Test data

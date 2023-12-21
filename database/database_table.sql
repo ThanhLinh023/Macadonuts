@@ -66,7 +66,7 @@ create table vouchers
     constraint primary key(voucher_code)
 );
 
-
+alter table cake add constraint check_price check(price > 0);
 alter table users add constraint fk_user_role foreign key (user_role) references allrole(role_id);
 alter table cake add constraint fk_cake_type foreign key (cake_type) references cake_type(type_id);
 alter table order_detail add constraint fk_detail_cake foreign key (cake_id) references cake(cake_id);
