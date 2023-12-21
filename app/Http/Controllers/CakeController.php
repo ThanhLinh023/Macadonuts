@@ -111,22 +111,28 @@ class CakeController extends Controller
                 'price' => $request->price,
                 'note' => $request->note
             ]);
-        session()->flash('message', 'Đã thay đổi thông tin bánh');
         return redirect('/cakes/menu');
     }
-    public function deleteCake($name)
+    public function deleteCake(Request $request)
     {
-        $image = DB::table('cake')->where('cake_name', $name)
+        $image = DB::table('cake')->where('cake_id', $request->input('cake_id'))
                     ->get();
         if ($image[0]->isDiscount == 1)
         {
-            DB::table('cake')->where('cake_name', $name)->update(['isDiscount' => 0, 'discount_price' => 0]);
+            DB::table('cake')->where('cake_id', $request->input('cake_id'))->update(['isDiscount' => 0, 'discount_price' => 0]);
         }
         else
         {
             File::delete(public_path('image/' . $image[0]->image));
-            DB::table('cake')->where('cake_name', $name)->delete();
+            DB::table('order_detail')->where('cake_id', $image[0]->cake_id)->delete();
+            DB::table('cake')->where('cake_id', $request->input('cake_id'))->delete();
         }
-        return redirect('/cakes/menu');
+        return response()->json([
+            'html' => view('cakes.menu', [
+                'discount' => DB::table('cake')->where('isDiscount', 1)->get(),
+                'macarons' => DB::table('cake')->where('cake_type', 'mar')->Where('isDiscount', 0)->get(),
+                'donuts' => DB::table('cake')->where('cake_type', 'don')->Where('isDiscount', 0)->get()
+            ])->render()
+        ]);
     }
 }

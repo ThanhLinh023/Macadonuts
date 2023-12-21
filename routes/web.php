@@ -43,7 +43,7 @@ Route::post('/cakes/add/{type}', [CakeController::class, 'addNew']);
 Route::get('/cakes/{name}/modify', [CakeController::class, 'modifyForm'])->middleware('admin');
 Route::put('/cakes/modify/{name}', [CakeController::class, 'modify']);
 //Delete a cake
-Route::delete('/cakes/delete/{name}', [CakeController::class, 'deleteCake']);
+Route::delete('/cakes/deleteCake', [CakeController::class, 'deleteCake']);
 //Show cart
 Route::get('/cart', [OrderController::class, 'showCart'])->middleware('auth');
 
@@ -76,7 +76,8 @@ Route::get('/revenue', [OrderController::class, 'showRevenue'])->middleware('adm
 Route::post('/getRevenue', [OrderController::class, 'getRevenue']);
 //-------------------------Payment----------------------------
 Route::post('/VNPay_Payment', [CheckoutController::class, 'Payment'])->middleware('auth');
-
+Route::get('/chooseLocation', [CheckoutController::class, 'chooseLocationForm'])->middleware('auth');
+Route::post('/getLocation', [CheckoutController::class, 'calculateFee']);
 
 Route::get('/aboutus', function () {
     return view('cakes.aboutUs');
