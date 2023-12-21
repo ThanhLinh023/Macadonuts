@@ -50,6 +50,6 @@ class VoucherController extends Controller
             'discount_percentage' => (rtrim($request->percent, '%')) / 100,
             'min_order' => $request->min_bill
         ]);
-        return redirect('/voucher/add');
+        return redirect('/voucher');
     }
 }
