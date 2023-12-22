@@ -37,4 +37,5 @@
 - Continue in the terminal where you cloned the Git repository.
 - Run serve: `php artisan serve`
   ## Demo
-  
+  ![image](https://github.com/ThanhLinh023/Macadonuts/assets/101008308/d867a8f0-7c06-4c12-80fe-39f732657d9d)
+
