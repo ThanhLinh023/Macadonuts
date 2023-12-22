@@ -86,6 +86,9 @@
                             </tbody>
                         </table>
                         <div class="summary mb-3" style="width: 75%;">
+                            <a href="{{ route('invoices.download', ['orderId' => $o->order_id]) }}" class="btn btn-primary">In Hóa đơn</a>
+                            
+                          
                             <span class="fw-semibold" style="padding-right: 20px; display: flex; float: right;">
                                 $ Tổng thanh toán:
                                 <span style="margin-left: 7px">{{ $o->total_money }}</span>
