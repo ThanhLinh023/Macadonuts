@@ -35,7 +35,7 @@
         .to-top {
             background: white;
             position: fixed;
-            bottom: 16px;
+            bottom: 80px;
             right: 32px;
             width: 50px;
             height: 50px;
@@ -52,7 +52,7 @@
         }
 
         .to-top.active {
-            bottom: 32px;
+            bottom: 100px;
             pointer-events: auto;
             opacity: 1;
         }
@@ -273,6 +273,8 @@
         }
     })
 </script>
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('.addToCart').click(function () {
@@ -370,6 +372,7 @@
     })
 </script>
 
+@if (auth()->user() && auth()->user()->user_role == 2)
 <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <df-messenger
   intent="WELCOME"
@@ -377,5 +380,6 @@
   agent-id="d88b5afc-92f3-4790-853f-18cdaa3e867c"
   language-code="en"
 ></df-messenger>
+@endif
 
 </html>

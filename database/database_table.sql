@@ -51,13 +51,7 @@ create table cake_order
     order_date datetime,
     constraint primary key(order_id)
 );
-create table revenue_report
-(
-	month_check int, 
-    year_check int,
-    sold_quantity int,
-    revenue int
-);
+
 create table vouchers
 (
 	voucher_code varchar(50) unique not null,
@@ -182,6 +176,13 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+truncate table order_detail;
+truncate table cake_order;
+
+SET SQL_SAFE_UPDATES = 0;
+
+delete from cake_order where user_id = 5451;
 
 drop table users;
 drop table cake;

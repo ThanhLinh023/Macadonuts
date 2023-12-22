@@ -205,7 +205,7 @@
                         <h5 class="card-title text-capitalize">TIN TỨC</h5>
                         <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
                             thu hè này</p>
-                        <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
+                        <a href="/news" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
             </div>
@@ -216,7 +216,7 @@
                     <div class="card-body p-2">
                         <h5 class="card-title text-capitalize">TIN TỨC</h5>
                         <p class="news-text mb-1">Donut mới của chúng tôi chuẩn bị ra mắt và mùa đông năm nay</p>
-                        <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
+                        <a href="/news" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
             </div>
@@ -227,7 +227,7 @@
                     <div class="card-body p-2">
                         <h5 class="card-title text-capitalize">TIN TỨC</h5>
                         <p class="news-text mb-1">Thông tin khuyến mãi từ MACADONUTS trong quý cuối năm</p>
-                        <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
+                        <a href="/news" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
             </div>

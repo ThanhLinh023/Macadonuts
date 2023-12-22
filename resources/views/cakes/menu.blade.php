@@ -727,4 +727,18 @@
     </div>
 
     </div>
+    
+    @if (auth()->user() && auth()->user()->user_role == 2)
+    <div class="bitrix24 mb-3">
+    <script data-b24-form="inline/5/93v71z" data-skip-moving="true">
+        (function(w, d, u) {
+            var s = d.createElement('script');
+            s.async = true;
+            s.src = u + '?' + (Date.now() / 180000 | 0);
+            var h = d.getElementsByTagName('script')[0];
+            h.parentNode.insertBefore(s, h);
+        })(window, document, 'https://cdn.bitrix24.vn/b27964713/crm/form/loader_5.js');
+    </script>
+    </div>
+    @endif
 @endsection
