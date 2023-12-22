@@ -35,7 +35,7 @@ class OrderController extends Controller
         $order = DB::table('cake_order')
             ->leftJoin('users', 'cake_order.user_id', '=', 'users.user_id')
             ->where('users.user_id', auth()->user()->user_id)
-            ->select('order_id', 'total_money')
+            ->select('order_id', 'total_money', 'paid', 'percentDiscount')
             ->get();
         $orderDetail = DB::table('order_detail')
             ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
@@ -55,7 +55,7 @@ class OrderController extends Controller
         $order = DB::table('cake_order')
             ->leftJoin('users', 'cake_order.user_id', '=', 'users.user_id')
             ->where('users.user_id', $uid)
-            ->select('order_id', 'total_money', 'users.name')
+            ->select('order_id', 'total_money', 'users.name', 'paid', 'percentDiscount')
             ->get();
         $orderDetail = DB::table('order_detail')
             ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
@@ -100,6 +100,10 @@ class OrderController extends Controller
     }
     public function deleteFromCart(Request $request)
     {
+        if (session()->get('percentage') != null)
+        {
+            session()->forget('percentage');
+        }
         $cart = session()->get('cart');
         unset($cart[$request->input('cake_id')]);
         session()->put('cart', $cart);

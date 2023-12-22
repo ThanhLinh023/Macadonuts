@@ -25,6 +25,7 @@ class VoucherController extends Controller
         }
         if ($check)
         {
+            session()->put('percentage', $percent);
             return redirect('/cart')->with('percent', $percent)->with('minOrder', $minOrder)->with('check', $check);
         }
         else

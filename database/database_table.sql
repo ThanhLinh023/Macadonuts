@@ -49,6 +49,8 @@ create table cake_order
     user_id varchar(255),
     total_money int default 0,
     order_date datetime,
+    percentDiscount float default 0,
+    paid int default 0,
     constraint primary key(order_id)
 );
 create table revenue_report

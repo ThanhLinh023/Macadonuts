@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use PDF;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -26,7 +27,8 @@ class InvoiceController extends Controller
                         'cake.price',
                         'order_detail.total',
                         'cake_order.order_date',
-                        'cake_order.total_money'
+                        'cake_order.total_money',
+                        'percentDiscount'
                     )
                     ->where('cake_order.order_id', $orderId)
                     ->get();
@@ -44,7 +46,7 @@ class InvoiceController extends Controller
                 $pdf = PDF::loadView('invoice/invoice', compact('invoiceData', 'orderItems'));
 
                 // Tùy chọn để tải file PDF hoặc hiển thị trực tiếp trong trình duyệt
-                return $pdf->download('invoice.pdf');
+                return $pdf->download('Invoice_' . $orderId . '.pdf');
 
         }
 }

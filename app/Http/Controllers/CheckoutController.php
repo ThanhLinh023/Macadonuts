@@ -11,7 +11,9 @@ class CheckoutController extends Controller
     {
         //Save order to database
         $cart = session()->get('cart');
-        session()->put('cart', []);
+        $percent = session()->get('percentage');
+        session()->forget('cart');
+        session()->forget('percentage');
         $oid = mt_rand(1000, 9999);
         $cake_order = [
             'order_id' => $oid,
@@ -30,6 +32,11 @@ class CheckoutController extends Controller
                 'total' => $value['quantity'] * $value['price']
             ];
             DB::table('order_detail')->insert($od);
+        }
+        if ($percent > 0)
+        {
+            $total = $total * (1 - $percent);
+            DB::table('cake_order')->where('order_id', $oid)->update(['percentDiscount' => $percent]);
         }
         //Direct to payment gate of VN Pay
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -91,6 +98,7 @@ class CheckoutController extends Controller
             , 'data' => $vnp_Url);
         if (isset($_POST['redirect'])) 
         {
+            DB::table('cake_order')->where('order_id', $oid)->update(['paid' => 1]);
             header('Location: ' . $vnp_Url);
             die();
         } 

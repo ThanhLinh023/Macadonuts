@@ -90,7 +90,13 @@
             </table>
         </div>
         <div class="total">
-            <p><strong>Total money:</strong> ${{ $invoiceData->total_money }}</p>
+            <p><strong>Total order:</strong> ${{ $invoiceData->total_money }}</p>
+            @if ($invoiceData->percentDiscount > 0)
+                <p><strong>Voucher discount:</strong> ${{ $invoiceData->total_money * $invoiceData->percentDiscount }}</p>
+                <p><strong>Total money:</strong> ${{ $invoiceData->total_money * (1 - $invoiceData->percentDiscount) }}</p>
+            @else
+                <p><strong>Total money:</strong> ${{ $invoiceData->total_money }}</p>
+            @endif
         </div>
     </div>
 </body>

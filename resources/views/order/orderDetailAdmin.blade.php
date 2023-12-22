@@ -81,16 +81,17 @@
                                             <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
                                         </svg>
                                         <span class="fw-semibold" style="padding-right: 20px; padding-left: 6px;">Tình trạng:</span>
-                                        <span>Đang duyệt</span> <br>
+                                        <span>{{ $o->paid == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' }}</span> <br>
                                     </div>
                             </tbody>
                         </table>
                     
                     
                     <div class="summary mb-3" style="width: 75%;">
+                        <a href="{{ route('invoices.download', ['orderId' => $o->order_id]) }}" class="btn btn-primary">In Hóa đơn</a>
                         <span class="fw-semibold" style="padding-right: 20px; display: flex; float: right;">
                             $ Tổng thanh toán:
-                            <span style="margin-left: 7px">{{ $o->total_money }}₫</span>
+                            <span style="margin-left: 7px">{{ $o->total_money * (1 - $o->percentDiscount) }}₫</span>
                             <br> <br>
                         </span>
                     </div>
