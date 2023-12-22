@@ -158,7 +158,8 @@
                 <div class="card comment-card w-75 border-0" style="">
                     <div class="card-body">
                         <img src="{{ URL::to('./image/minhphucpic/vikhang.avif') }}" alt="" class="img-fluid">
-                        <p class="comment-text">Macadonuts đã đem đến cho tôi một trải nghiệm có một không hai với sự nhiệt tình và chu đáo.</p>
+                        <p class="comment-text">Macadonuts đã đem đến cho tôi một trải nghiệm có một không hai với
+                            sự nhiệt tình và chu đáo.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Vĩ Khang</h5>
                     </div>
                 </div>
@@ -167,7 +168,8 @@
                 <div class="card comment-card w-75 border-0 bg-dark-subtle" style="">
                     <div class="card-body">
                         <img src="{{ URL::to('./image/minhphucpic/bichchi.avif') }}" alt="" class="img-fluid">
-                        <p class="comment-text">Món ăn ở đây thật tuyệt vời, tuy có 2 loại bánh nhưng sự tinh tế và cầu kì là tuyệt đối tốt.</p>
+                        <p class="comment-text">Món ăn ở đây thật tuyệt vời, tuy có 2 loại bánh nhưng sự tinh tế
+                            và cầu kì là tuyệt đối tốt.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Bích Chi</h5>
                     </div>
                 </div>
@@ -177,7 +179,8 @@
                     <div class="card-body">
                         <img src="{{ URL::to('./image/minhphucpic/thanhlinh.avif') }}" alt="" class="img-fluid"
                             style="height: 175px; width: 300px; object-fit: cover;">
-                        <p class="comment-text">Tôi sẽ ghé lại Macadonuts vào một ngày không xa, chắc chắn là như vậy.</p>
+                        <p class="comment-text">Tôi sẽ ghé lại Macadonuts vào một ngày không xa, chắc chắn là như
+                            vậy.</p>
                         <h5 class="card-title fw-bolder text-uppercase text-end fs-6">Thanh Linh</h5>
                     </div>
                 </div>
@@ -200,7 +203,8 @@
                         alt="Danh mục 1">
                     <div class="card-body p-2">
                         <h5 class="card-title text-capitalize">TIN TỨC</h5>
-                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong thu hè này</p>
+                        <p class="news-text mb-1">Mọi loại bánh của chúng tôi sẽ từ donut đến macaron sẽ được phục vụ trong
+                            thu hè này</p>
                         <a href="#" class="text-black-50 text-decoration-none">Xem thêm</a>
                     </div>
                 </div>
@@ -229,4 +233,18 @@
             </div>
         </div>
     </div>
+
+    @if (auth()->user() && auth()->user()->user_role == 2)
+    <div class="bitrix24 mb-3">
+    <script data-b24-form="inline/5/93v71z" data-skip-moving="true">
+        (function(w, d, u) {
+            var s = d.createElement('script');
+            s.async = true;
+            s.src = u + '?' + (Date.now() / 180000 | 0);
+            var h = d.getElementsByTagName('script')[0];
+            h.parentNode.insertBefore(s, h);
+        })(window, document, 'https://cdn.bitrix24.vn/b27964713/crm/form/loader_5.js');
+    </script>
+    </div>
+    @endif
 @endsection

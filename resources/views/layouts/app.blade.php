@@ -370,4 +370,12 @@
     })
 </script>
 
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Macadonuts_chatbot"
+  agent-id="d88b5afc-92f3-4790-853f-18cdaa3e867c"
+  language-code="en"
+></df-messenger>
+
 </html>

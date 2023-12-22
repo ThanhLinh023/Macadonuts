@@ -88,6 +88,7 @@ alter table order_detail drop constraint fk_detail_cake;
 alter table order_detail drop constraint fk_detail_order;
 alter table cake_order drop constraint fk_user_order;
 
+
 -- Trigger add total of order_detail to total_money of cake_order. Add number of sold cake to revenue_report table
 DELIMITER //
 create trigger before_order_detail_insert
@@ -181,6 +182,7 @@ BEGIN
 END;
 //
 DELIMITER ;
+
 drop table users;
 drop table cake;
 drop table order_detail;

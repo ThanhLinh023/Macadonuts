@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\InvoiceController;
 
 //--------------------------Authentication-----------------------------
 //Profile
@@ -100,3 +101,4 @@ route::get('/news', function () {
 });
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/invoices/download/{orderId}', [InvoiceController::class, 'generateInvoice'])->name('invoices.download');
