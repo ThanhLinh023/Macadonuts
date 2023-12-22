@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 
 class InvoiceController extends Controller
     {
@@ -21,7 +21,7 @@ class InvoiceController extends Controller
                         'users.phone as customer_phone',
                         'cake_order.order_id',
                         'cake.cake_name',
-                        'cake.discount_price', // Thêm cột discount_price vào select
+                        'cake.discount_price', 
                         'order_detail.quantity',
                         'cake.price',
                         'order_detail.total',
@@ -31,19 +31,20 @@ class InvoiceController extends Controller
                     ->where('cake_order.order_id', $orderId)
                     ->get();
         
-                // Kiểm tra xem order có tồn tại không
+              
                 if ($data->isEmpty()) {
                     abort(404, 'Order not found');
                 }
         
-                // Lấy dữ liệu từ kết quả truy vấn
+                
                 $invoiceData = $data->first();
-                $orderItems = $data->groupBy('cake_name'); // Group các sản phẩm theo tên để hiển thị tất cả
+                $orderItems = $data->groupBy('cake_name'); 
+                $invoiceData->order_date = Carbon::parse($invoiceData->order_date)->format('Y-m-d');
         
-                // Tạo PDF từ blade template và dữ liệu
+              
                 $pdf = PDF::loadView('invoice/invoice', compact('invoiceData', 'orderItems'));
         
-                // Tùy chọn để tải file PDF hoặc hiển thị trực tiếp trong trình duyệt
+              
                 return $pdf->download('invoice.pdf');
     
         }

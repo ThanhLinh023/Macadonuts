@@ -1,10 +1,10 @@
+<!-- resources/views/invoice.blade.php -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
-    <meta charset="UTF-8" content="{{ csrf_token() }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
     <title>Hóa đơn</title>
     <style>
         body {
@@ -30,6 +30,8 @@
         }
         .customer-details,
         .order-details {
+            text-align: center;
+            display: inline-block;
             width: 48%;
         }
         .order-items table {
@@ -52,28 +54,28 @@
 <body>
     <div class="invoice">
         <div class="header">
-            <h1>Hóa đơn</h1>
+            <h1>Invoice</h1>
         </div>
         <div class="invoice-details">
             <div class="customer-details">
-                <p><strong>Khách hàng:</strong> {{ $invoiceData->customer_name }}</p>
-                <p><strong>Số điện thoại:</strong> {{ $invoiceData->customer_phone }}</p>
+                <p><strong>Customer:</strong> {{ $invoiceData->customer_name }}</p>
+                <p><strong>Phone:</strong> {{ $invoiceData->customer_phone }}</p>
             </div>
             <div class="order-details">
-                <p><strong>Mã đơn hàng:</strong> {{ $invoiceData->order_id }}</p>
-                <p><strong>Ngày đặt hàng:</strong> {{ $invoiceData->order_date }}</p>
+                <p><strong>Order ID:</strong> {{ $invoiceData->order_id }}</p>
+                <p><strong>Order Date:</strong> {{ $invoiceData->order_date }}</p>
             </div>
         </div>
         <div class="order-items">
-            {{-- <h2>Order Items</h2> --}}
+            <h2>Order Items</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Đơn giá</th>
-                        <th>Giá ưu đãi</th>
-                        <th>Thành tiền</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        {{-- <th>Discount Price</th> --}}
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,7 +84,7 @@
                             <td>{{ $itemName }}</td>
                             <td>{{ $items->sum('quantity') }}</td>
                             <td>{{ $items->first()->price }}</td>
-                            <td>{{ $items->first()->discount_price }}</td>
+                            {{-- <td>{{ $items->first()->discount_price }}</td> --}}
                             <td>{{ $items->first()->total }} </td>
                         </tr>
                     @endforeach
@@ -90,7 +92,7 @@
             </table>
         </div>
         <div class="total">
-            <p><strong>Tổng tiền:</strong> ${{ $invoiceData->total_money }}</p>
+            <p><strong>Total:</strong> ${{ $invoiceData->total_money }}</p>
         </div>
     </div>
 </body>
