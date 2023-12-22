@@ -129,38 +129,13 @@ class OrderController extends Controller
     {
         return view('order.revenue');
     }
-    public function calculate($month, $year)
-    {
-        $soldMar = DB::table('order_detail')
-                        ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
-                        ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
-                        ->select(DB::raw('SUM(quantity) as slmar'))
-                        ->where('cake_type', '=', 'mar')
-                        ->where(DB::raw('MONTH(order_date)'), $month)
-                        ->where(DB::raw('YEAR(order_date)'), $year)
-                        ->get();
-        $soldDon = DB::table('order_detail')
-                        ->leftJoin('cake_order', 'cake_order.order_id', '=', 'order_detail.order_id')
-                        ->leftJoin('cake', 'cake.cake_id', '=', 'order_detail.cake_id')
-                        ->select(DB::raw('SUM(quantity) as sldon'))
-                        ->where('cake_type', '=', 'don')
-                        ->where(DB::raw('MONTH(order_date)'), $month)
-                        ->where(DB::raw('YEAR(order_date)'), $year)
-                        ->get();
-        $totalMoney = DB::table('cake_order')
-                        ->select(DB::raw('SUM(total_money) as total'))
-                        ->where(DB::raw('MONTH(order_date)'), $month)
-                        ->where(DB::raw('YEAR(order_date)'), $year)
-                        ->get();
-        return [$soldMar[0]->slmar, $soldDon[0]->sldon, $totalMoney[0]->total];
-    }
     public function getRevenue(Request $request)
     {
-        $number = $this->calculate($request->month, $request->year);
+        $number = DB::table('revenue_report')->where('month_check', $request->month)->where('year_check', $request->year)->first();;
         return view('order.revenue', [
-            'mar' => $number[0],
-            'don' => $number[1],
-            'total' => $number[2]
+            'mar' => $number->sold_mar,
+            'don' => $number->sold_don,
+            'total' => $number->revenue
         ]);
     }
 }
