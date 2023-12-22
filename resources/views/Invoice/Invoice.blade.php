@@ -1,14 +1,15 @@
+<!-- resources/views/invoice.blade.php -->
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" content="{{ csrf_token() }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hóa đơn</title>
+    <title>Invoice</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .invoice {
             width: 100%;
@@ -22,6 +23,16 @@
         .header {
             text-align: center;
             margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #555;
         }
         .invoice-details {
             display: flex;
@@ -47,50 +58,57 @@
             margin-top: 20px;
             text-align: right;
         }
+        .footer {
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="invoice">
         <div class="header">
-            <h1>Hóa đơn</h1>
+            <h1>Macadonuts</h1>
+            <h2>Macaron & Donuts</h2>
+            <h3>INVOICE</h3>
         </div>
         <div class="invoice-details">
             <div class="customer-details">
-                <p><strong>Khách hàng:</strong> {{ $invoiceData->customer_name }}</p>
-                <p><strong>Số điện thoại:</strong> {{ $invoiceData->customer_phone }}</p>
+                <p><strong>Customer:</strong> {{ $invoiceData->customer_name }}</p>
+                <p><strong>Phone:</strong> {{ $invoiceData->customer_phone }}</p>
+                <p><strong>Order ID:</strong> {{ $invoiceData->order_id }}</p>
+                <p><strong>Order Date:</strong> {{ $invoiceData->order_date }}</p>
             </div>
-            <div class="order-details">
-                <p><strong>Mã đơn hàng:</strong> {{ $invoiceData->order_id }}</p>
-                <p><strong>Ngày đặt hàng:</strong> {{ $invoiceData->order_date }}</p>
-            </div>
-        </div>
-        <div class="order-items">
-            {{-- <h2>Order Items</h2> --}}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Đơn giá</th>
-                        <th>Giá ưu đãi</th>
-                        <th>Thành tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($orderItems as $itemName => $items)
+            <div class="order-items">
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ $itemName }}</td>
-                            <td>{{ $items->sum('quantity') }}</td>
-                            <td>{{ $items->first()->price }}</td>
-                            <td>{{ $items->first()->discount_price }}</td>
-                            <td>{{ $items->first()->total }} </td>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <!-- <th>Discount Price</th> -->
+                            <th>Total</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($orderItems as $itemName => $items)
+                            <tr>
+                                <td>{{ $itemName }}</td>
+                                <td>{{ $items->sum('quantity') }}</td>
+                                <td>{{ $items->first()->price }} vnd</td>
+                                <!-- <td>{{ $items->first()->discount_price }}</td> -->
+                                <td>{{ $items->first()->total }} vnd </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="total">
-            <p><strong>Tổng tiền:</strong> ${{ $invoiceData->total_money }}</p>
+            <p><strong>Total Amount:</strong> {{ $invoiceData->total_money }} vnd</p>
+           
+        </div>
+        <div class="footer">
+            <p>Thank you for choosing our products. Enjoy your meal</p>
         </div>
     </div>
 </body>
