@@ -11,6 +11,7 @@ class CheckoutController extends Controller
     {
         //Save order to database
         $cart = session()->get('cart');
+        session()->put('cart', []);
         $oid = mt_rand(1000, 9999);
         $cake_order = [
             'order_id' => $oid,
@@ -30,7 +31,6 @@ class CheckoutController extends Controller
             ];
             DB::table('order_detail')->insert($od);
         }
-        session()->put('cart', []);
         //Direct to payment gate of VN Pay
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://127.0.0.1:8000/myorder";

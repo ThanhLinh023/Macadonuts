@@ -171,7 +171,7 @@
                                         <div class="d-flex flex-row justify-content-between">
                                             <span class="fw-semibold">Giảm giá voucher</span>
                                             <span
-                                                class="fw-bold">{{ number_format($tmp * session()->get('percent'), 0, ',', '.') }}</span>
+                                                class="fw-bold">{{ number_format($tmp * session()->get('percent'), 0, ',', '.') }}đ</span>
                                         </div>
                                         <div class="d-flex flex-row justify-content-between">
                                             <span class="fw-semibold">Tổng thanh toán</span>

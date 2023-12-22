@@ -104,11 +104,21 @@ class AuthController extends Controller
     }
     public function deleteUser($user_id)
     {
+        $allOrder = DB::table('cake_order')->where('user_id', $user_id)->get();
+        foreach ($allOrder as $o)
+        {
+            DB::table('order_detail')->where('order_id', $o->order_id)->delete();
+        }
         DB::table('users')->where('user_id', $user_id)->delete();
         return redirect()->route('login');
     }
     public function deleteUserForAdmin($user_id)
     {
+        $allOrder = DB::table('cake_order')->where('user_id', $user_id)->get();
+        foreach ($allOrder as $o)
+        {
+            DB::table('order_detail')->where('order_id', $o->order_id)->delete();
+        }
         DB::table('users')->where('user_id', $user_id)->delete();
         return redirect('/customermanage');
     }
